@@ -1,0 +1,4839 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0114)http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <title>Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials | Dream.In.Code</title>
+    
+	
+	<meta name="keywords" content="Converting,Evaluating,Infix,Postfix,Prefix,Expressions,CONVERTING,AND,EVALUATING,INFIX,POSTFIX,PREFIX,ExpressinS,Sanchit,Karve,born2c0de,printfIm,XR195936478,CONTACT">
+	
+
+	<style type="text/css"></style><meta name="description" content="Converting and Evaluating Infix, Postfix and Prefix Expressions in C: ">
+	
+
+	<meta name="identifier-url" content="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/">
+	
+
+	
+		
+			
+			
+			
+			
+				<link rel="canonical" href="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code.htm">
+			
+		
+
+			
+			
+			
+			
+				<link rel="next" href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/page__st__15">
+			
+		
+
+			
+			
+			
+			
+				<link rel="last" href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/page__st__15">
+			
+		
+
+			
+			
+			
+			
+				<link rel="up" href="http://www.dreamincode.net/forums/forum/48-c-tutorials/">
+			
+		
+
+			
+			
+			
+			
+				<link rel="author" href="http://www.dreamincode.net/forums/user/3388-born2c0de/">
+			
+		
+	
+
+		
+			
+			
+				<link rel="alternate feed" type="application/rss+xml" title="Programming Forums" href="http://www.dreamincode.net/forums/rss/forums/1-programming-forums/">
+			
+			
+			
+		
+
+			
+			
+				<link rel="alternate feed" type="application/rss+xml" title="Dream.In.Code Blogs RSS feed" href="http://www.dreamincode.net/forums/rss/blog/">
+			
+			
+			
+		
+	
+
+	
+				
+			<style type="text/css"></style><link rel="stylesheet" type="text/css" title="Main" media="screen" href="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/ipb_editor.css">
+		
+	
+
+				
+			<link rel="stylesheet" type="text/css" title="Main" media="screen" href="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/ipb_styles.css">
+		
+	
+
+				
+			<link rel="stylesheet" type="text/css" title="Main" media="screen" href="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/calendar_select.css">
+		
+	
+
+				
+			<link rel="stylesheet" type="text/css" media="print" href="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/ipb_print.css">
+		
+	
+	
+
+<!--[if lte IE 7]>
+	<link rel="stylesheet" type="text/css" title='Main' media="screen" href="http://cdn.dreamincode.net/forums/public/style_css/css_5/ipb_ie.css?v=58" />
+<![endif]-->
+    <!--included content-->
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+	<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="http://www.dreamincode.net/home/favicon.ico">
+	<link rel="alternate" title="dream.in.code Forums" href="http://www.dreamincode.net/rss/featured.php" type="application/rss+xml">
+	<link type="text/css" rel="stylesheet" href="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/styles_7.css">
+	<link rel="stylesheet" href="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/google_cse.css" type="text/css">
+	<link rel="stylesheet" href="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/thickbox.css" type="text/css">
+	<meta property="fb:page_id" content="62219401412">
+
+	<!-- OLD LAYOUT -->
+		<script src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/cb=gapi.loaded_1" async=""></script><script src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/plusone.js" gapi_processed="true"></script><script type="text/javascript" src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/jquery.min.js"></script>
+		<script type="text/javascript">
+		jQuery.noConflict();
+		</script>
+		<script type="text/javascript">
+		  //<![CDATA[
+		  function loginToggle() {
+			var target = document.getElementById("login").getElementsByTagName("div")[0];
+			!target.className.match(/ visible/) ? target.className += " visible" : target.className = target.className.replace(/ visible/, "");
+			}
+		  //]]>
+		</script>  
+<!-- 		<script type="text/javascript">
+		function utmx_section(){}function utmx(){}
+		(function(){var k='2514943763',d=document,l=d.location,c=d.cookie;function f(n){
+		if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.indexOf(';',i);return escape(c.substring(i+n.
+		length+1,j<0?c.length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;
+		d.write('<sc'+'ript src="'+
+		'http'+(l.protocol=='https:'?'s://ssl':'://www')+'.google-analytics.com'
+		+'/siteopt.js?v=1&utmxkey='+k+'&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='
+		+new Date().valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
+		'" type="text/javascript" charset="utf-8"></sc'+'ript>')})();
+		</script>
+ -->
+
+<!-- 
+	<link type="text/css" rel="stylesheet" href="http://cdn.dreamincode.net/syntax/SyntaxHighlighter.css"></link>
+	<script language="javascript" src="http://cdn.dreamincode.net/syntax/shCore.js"></script>
+
+	<link href="http://cdn.dreamincode.net/syntax/prettify.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="http://cdn.dreamincode.net/syntax/prettify.js"></script>
+-->
+<!-- 	
+	<link href="http://cdn.dreamincode.net/forums/public/style_css/prettify.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="http://cdn.dreamincode.net/forums/public/js/3rd_party/prettify/prettify.js"></script>
+
+ -->
+
+
+	
+<!-- Google Website Optimizer Control Script -->
+<!-- End of Google Website Optimizer Control Script -->
+
+<script type="text/javascript">
+(function() {
+var useSSL = 'https:' == document.location.protocol;
+var src = (useSSL ? 'https:' : 'http:') +
+'//www.googletagservices.com/tag/js/gpt.js';
+document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+})();
+</script><script src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/gpt.js"></script>
+
+<script type="text/javascript">
+googletag.defineSlot('/1014587/DIC_728x90_Header_Default', [728, 90], 'div-gpt-ad-1326943007260-5').addService(googletag.pubads());
+googletag.defineSlot('/1014587/DIC_300x250_FirstPost_Default', [300, 250], 'div-gpt-ad-1326943007260-1').addService(googletag.pubads());
+googletag.defineSlot('/1014587/DIC_336x280_Footer_Default', [336, 280], 'div-gpt-ad-1326943007260-4').addService(googletag.pubads());
+googletag.defineSlot('/1014587/DIC_300x250_TopCenter_Default', [300, 250], 'div-gpt-ad-1326943007260-2').addService(googletag.pubads());
+googletag.defineSlot('/1014587/DIC_160x600_Left_Default', [160, 600], 'div-gpt-ad-1326943007260-0').addService(googletag.pubads());
+googletag.pubads().enableSyncRendering();
+googletag.enableServices();
+</script><script type="text/javascript" src="http://partner.googleadservices.com/gpt/pubads_impl_31.js"></script>
+
+<!--/ included content-->
+    <script type="text/javascript">
+      jsDebug = 0; /* Must come before JS includes */
+      USE_RTE = 0;
+      inACP   = false;
+    </script>
+    
+		<script type="text/javascript" src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/prototype.js"></script>
+	
+	<script type="text/javascript" src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/ipb.js"></script>
+	
+		<script type="text/javascript" src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/scriptaculous-cache.js"></script>
+	
+	<script type="text/javascript" src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/ipb.lang.js" charset="iso-8859-1"></script>
+	
+
+<script type="text/javascript">
+	var isRTL	= false;
+	var rtlIe	= '';
+	var rtlFull	= '';
+</script>
+
+		
+    <script type="text/javascript">
+	//<![CDATA[
+		/* ---- URLs ---- */
+		ipb.vars['base_url'] 			= 'http://www.dreamincode.net/forums/index.php?&';
+		ipb.vars['board_url']			= 'http://www.dreamincode.net/forums';
+		ipb.vars['loading_img'] 		= 'http://cdn.dreamincode.net/forums/public/style_images/master/loading.gif';
+		ipb.vars['active_app']			= 'forums';
+		ipb.vars['upload_url']			= 'http://www.dreamincode.net/forums/uploads';
+		/* ---- Member ---- */
+		ipb.vars['member_id']			= parseInt( 0 ),
+		ipb.vars['is_supmod']			= parseInt( 0 ),
+		ipb.vars['is_admin']			= parseInt( 0 ),
+		ipb.vars['secure_hash'] 		= '880ea6a14ea49e853634fbdc5015a024';
+		ipb.vars['session_id']			= '48525c50f10cee2d7a6aa401c5a6974f';
+		ipb.vars['can_befriend']		= true;
+		/* ---- cookies ----- */
+		ipb.vars['cookie_id'] 			= 'dic_';
+		ipb.vars['cookie_domain'] 		= '.dreamincode.net';
+		ipb.vars['cookie_path']			= '/';
+		/* ---- Rate imgs ---- */
+		ipb.vars['rate_img_on']			= 'http://cdn.dreamincode.net/forums/public/style_images/master/bullet_star.png';
+		ipb.vars['rate_img_off']		= 'http://cdn.dreamincode.net/forums/public/style_images/master/bullet_star_off.png';
+		ipb.vars['rate_img_rated']		= 'http://cdn.dreamincode.net/forums/public/style_images/master/bullet_star_rated.png';
+		/* ---- Uploads ---- */
+		ipb.vars['swfupload_swf']		= 'http://www.dreamincode.net/forums/public/js/3rd_party/swfupload/swfupload.swf';
+		ipb.vars['swfupload_enabled']	= true;
+		ipb.vars['use_swf_upload']		= ( '' == 'flash' ) ? true : false;
+		ipb.vars['swfupload_debug']		= false; /* SKINNOTE: Turn off for production */
+		/* ---- other ---- */
+		ipb.vars['use_live_search'] 	= 0;
+		ipb.vars['live_search_limit'] 	= 4;
+		ipb.vars['highlight_color']		= "#ade57a";
+		ipb.vars['charset']				= "iso-8859-1";
+		ipb.vars['use_rte']				= 1;
+		ipb.vars['image_resize']		= 1;
+		ipb.vars['image_resize_force']  = 500;
+		ipb.vars['seo_enabled']			= 1;
+		
+		ipb.vars['seo_params']			= {"start":"-","end":"\/","varBlock":"\/page__","varSep":"__"};
+		
+		/* Templates/Language */
+		ipb.templates['ajax_loading'] 	= "<div id='ajax_loading'>" + ipb.lang['loading'] + "</div>";
+		ipb.templates['close_popup']	= "<img src='http://cdn.dreamincode.net/forums/public/style_images/master/close_popup.png' alt='x' />";
+		ipb.templates['rss_shell']		= new Template("<ul id='rss_menu'>#{items}</ul>");
+		ipb.templates['rss_item']		= new Template("<li><a href='#{url}' title='#{title}'>#{title}</a></li>");
+		ipb.templates['resized_img']	= new Template("<span>Resized to #{percent}% (was #{width} x #{height}) - Click image to enlarge</span>");
+		ipb.templates['m_add_friend']	= new Template("<a href='http://www.dreamincode.net/forums/index.php?app=members&amp;module=profile&amp;section=friends&amp;do=add&amp;member_id=#{id}' title='Add as Friend'><img src='http://cdn.dreamincode.net/forums/public/style_images/master/user_add.png' alt='Add as Friend' /></a>");
+		ipb.templates['m_rem_friend']	= new Template("<a href='http://www.dreamincode.net/forums/index.php?app=members&amp;module=profile&amp;section=friends&amp;do=remove&amp;member_id=#{id}' title='Remove Friend'><img src='http://cdn.dreamincode.net/forums/public/style_images/master/user_delete.png' alt='Remove Friend' /></a>");
+		ipb.templates['autocomplete_wrap'] = new Template("<ul id='#{id}' class='ipb_autocomplete' style='width: 250px;'></ul>");
+		ipb.templates['autocomplete_item'] = new Template("<li id='#{id}'><img src='#{img}' alt='' width='#{img_w}' height='#{img_h}' />&nbsp;&nbsp;#{itemvalue}</li>");
+		ipb.templates['page_jump']		= new Template("<div id='#{id}_wrap' class='ipbmenu_content'><h3 class='bar'>Jump to page</h3><input type='text' class='input_text' id='#{id}_input' size='8' /> <input type='submit' value='Go' class='input_submit add_folder' id='#{id}_submit' /></div>");
+	//]]>
+	</script>
+
+
+ 
+
+
+
+
+    <script type="text/javascript">
+      Loader.boot();
+    </script><script type="text/javascript" src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/ips.quickpm.js"></script><script type="text/javascript" src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/ips.editor.js"></script><script type="text/javascript" src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/ips.topic.js"></script><script type="text/javascript" src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/ips.rating.js"></script>
+
+
+
+
+<style type="text/css">
+pre { overflow: scroll; max-height:500px; background: white; border: 1px solid #66666; padding: 5px; }
+</style>
+
+
+  <script type="text/javascript" src="http://www.dreamincode.net/mint/?record&key=3939385a6e615273534b4f4e46306d634c7633543336383331&referer=&resource=http%3A//www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/&resource_title=Converting%20And%20Evaluating%20Infix%2C%20Postfix%20And%20Prefix%20Expressions%20In%20C%20-%20C++%20Tutorials%20%7C%20Dream.In.Code&resource_title_encoded=0&1386330938884&serve_js"></script><script type="text/javascript" async="" src="http://cdn1.developermedia.com/a.min.js"></script><script type="text/javascript" async="" src="http://cdn2.developermedia.com/a.min.js"></script></head><!--included content-->
+
+
+<!-- <body onload="prettyPrint()"> -->
+ <body itemscope="" itemtype="http://schema.org/WebPage">
+<!-- TOP.PHP -->
+<!-- 	<div style="width: 99%; border-bottom: 1px solid black; padding: 5px; text-align: center; font-size: 14px; background: #FFFF99; font-weight: bolder;">
+
+		<a href="http://a.lakequincy.com/c.ashx?publisher=112&placement=7639&creative=7182" target="_blank">Turn your Mobile Apps into m-commerce apps – Learn More!</a>
+	</div> -->
+	
+	 
+	 
+	 <!-- <div style="color: white; height: 27px; margin: 0px auto; border-bottom: 0px solid white; padding: 0px; text-align: center; font-size: 14px; background-color: #1B50E0; font-weight: bolder;">
+	<div class="lqm_ad" lqm_publisher="lqm.dreamincode.site" lqm_zone="RON" lqm_format="1x6"></div>		
+	</div>  -->
+
+
+
+
+	<div id="header">
+        <h1 id="logo" style="width: 625px;"><a href="http://www.dreamincode.net/" rel="home"><img alt="&lt;/Dream.In.Code&gt;: Programming &amp; Web Development Community" width="264" height="110" src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/logo_2012.gif"></a>
+		<!-- <a href="http://ad.doubleclick.net/clk;253234078;66891089;u?http://www.devexpress.com/go/DreamInCode_Touch_88x325.aspx"><img src="http://cdn.dreamincode.net/home/images/DIC_DX_Build_Touch.png" height="88" border="0" style="margin-top: 10px; margin-left: 10px; padding-left: 5px; border-left: 1px solid #F7F7F7;"></a> -->
+		<!--<div style="position: absolute; top: 0px; left: 265px; width: 325px; height: 110px; border-left: 1px solid #F7F7F7; text-indent: 0pt;"><div class="lqm_ad" lqm_publisher="lqm.dreamincode.site" lqm_zone="ros" lqm_format="325x110"></div></div>-->
+		</h1>
+  		<!-- 	<div id="leaderboard">
+  					<div style="overflow: hidden; width: 728px; height: 90px;"></div>
+			</div> -->
+
+
+		<div style="height: 110px;">
+		   
+			<div style="padding-top: 30px; padding-right: 10px; float: right;">
+					<!-- google_ad_section_start(weight=ignore) -->		
+						<!-- Google CSE Search Box Begins  -->
+					
+				  <form style="margin: 0pt;" id="cse-search-box">
+
+						<span style="float: left; font-size: 24px; padding-top: 5px; padding-right: 5px; color: white; font-weight: bolder; text-shadow: 1px 1px 1px rgb(0, 0, 0);">Search:</span>
+						<input name="q" id="query" size="18" style="font-size: 20px; margin-top: 5px; border: 1px solid; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; background-image: url(http://www.google.com/cse/intl/en/images/google_custom_search_watermark.gif); background-color: rgb(255, 255, 255); background-position: 0% 50%; background-repeat: no-repeat no-repeat;" value="" type="text">
+						<input name="sa" value="Search" style="color: white; background: #303030; font-weight: bolder; border: 1px solid black; margin: 0px 0px 0px 5px; padding: 5px; -moz-border-radius: 5px 5px 5px 5px; border-radius: 5px 5px 5px 5px; position: relative; top: -3px;" type="submit">
+
+				  </form>
+					<script type="text/javascript">
+ 					var f = document.getElementById('cse-search-box');
+					var q = f.q;
+					    var b = function() {
+						  if (q.value == '') {
+							q.style.background = '#FFFFFF url(http:\x2F\x2Fwww.google.com\x2Fcse\x2Fintl\x2Fen\x2Fimages\x2Fgoogle_custom_search_watermark.gif) left no-repeat';
+						  }
+						};
+
+						var f = function() {
+						  q.style.background = '#ffffff';
+						};
+						window.onload = b;
+						q.onfocus = f;
+						q.onblur = b;
+
+					</script>
+				  <div style="text-align: right; clear: both;">
+				  <a href="http://www.dreamincode.net/forums/index.php?app=core&module=search" style="text-decoration: none;"><span style="font-size: 11px; color: rgb(255, 255, 255); font-weight: bold; text-decoration: underline; text-align: right;">Advanced Forum Search</span></a>
+				  </div>
+					<!-- Google CSE code begins -->
+			</div>
+
+		</div>
+
+
+		  <div id="navigation-login-register">
+					<ul class="navigation">
+					  <li class="first"><a href="http://www.dreamincode.net/forums/">Forums</a></li>
+					  <li>
+			  <a href="http://www.dreamincode.net/forums/forum/76-programming-help/">Programming</a>          
+			</li>
+					  <li>
+					   <a href="http://www.dreamincode.net/forums/forum/74-web-development/">Web Development</a>
+
+			</li>
+			<li><a href="http://www.dreamincode.net/forums/forum/71-computer-support/">Computers</a></li>
+					  <li><a href="http://www.dreamincode.net/forums/forum/78-programming-tutorials/">Tutorials</a></li>
+					  <li><a href="http://www.dreamincode.net/code/">Snippets</a></li>
+					  <li><a href="http://www.dreamincode.net/forums/?automodule=blog">Dev Blogs</a></li>
+					  <li><a href="http://jobs.dreamincode.net/">Jobs</a></li>
+					  <li class="last">
+					   <a rel="nofollow" href="http://www.dreamincode.net/forums/forum/1-caffeine-lounge/">Lounge</a>
+
+			</li>
+					</ul>
+					  <!-- INCLUDE CLASS PANEL -->
+												<ul id="login-register">
+	<li id="login"><a rel="nofollow" href="http://www.dreamincode.net/forums/index.php?app=core&module=global&section=login">Login</a></li>
+	<li id="register"><a rel="nofollow" href="http://www.dreamincode.net/forums/index.php?app=core&module=global&section=register&coppa_user=&termsread=1&coppa_pass=1&agree_to_terms=1">Join!</a></li>
+	<li id="todaystopics"><a href="http://www.dreamincode.net/forums/index.php?app=core&module=search&do=active">Today's Topics</a></li>
+</ul>
+						<!-- /INCLUDE CLASS PANEL -->
+		</div>
+      </div>
+
+
+
+	<div id="div-gpt-ad-1326943007260-5" style="margin: 5px auto; width: 728px; height: 90px; overflow: hidden; text-align: center;">
+	<!-- begin ad tag (tile=1) -->
+	<script type="text/javascript">
+	//<![CDATA[
+	ord = window.ord || Math.floor(Math.random()*1E16);
+	document.write('<script type="text/javascript" src="http://ad2.netshelter.net/adj/ns.dreamincode/general;ppos=atf;kw=;tile=1;dcopt=ist;sz=728x90;ord=' + ord + '?"><\/script>');
+	//]]>
+	</script><script type="text/javascript" src="http://ad2.netshelter.net/adj/ns.dreamincode/general;ppos=atf;kw=;tile=1;dcopt=ist;sz=728x90;ord=9154467610642314?"></script>
+	<noscript>&lt;a href="http://ad2.netshelter.net/jump/ns.dreamincode/general;ppos=atf;kw=;tile=1;sz=728x90;ord=123456789?" target="_blank" &gt;&lt;img src="http://ad2.netshelter.net/ad/ns.dreamincode/general;ppos=atf;kw=;tile=1;sz=728x90;ord=123456789?" border="0" alt="" /&gt;&lt;/a&gt;</noscript>
+	<!-- end ad tag -->
+	</div>
+
+
+
+<div style=" background: #FFF; margin: 0px auto; border-left: 1px solid #FFF;border-right: 1px solid #FFF;">
+    <!-- /TOP.PHP -->
+
+
+<!--/ included content-->
+    <!-- <?=forums?> | <?=forums?> -->
+
+  <div id="main_content">
+    <div id="content_hold" class="with_sidebar">
+      <div id="content_inner" class="content">
+        <div id="ipbwrapper">
+<ul id="breadcrumb" itemprop="breadcrumb" class="left"><li class="first"><a href="http://www.dreamincode.net/forums/index">Dream.In.Code</a></li>
+  
+            <li><span class="nav_sep">&gt;</span> <a href="http://www.dreamincode.net/forums/forum/78-programming-tutorials/" title="Return to Programming Tutorials">Programming Tutorials</a></li>
+  
+
+
+            <li><span class="nav_sep">&gt;</span> <a href="http://www.dreamincode.net/forums/forum/48-c-tutorials/" title="Return to C++ Tutorials">C++ Tutorials</a></li>
+  
+
+          </ul><br>
+          <!--included content-->
+<!-- ads_top.php -->
+<!-- 
+	<div id=EchoTopic>
+	<br />
+-->
+
+<!--/ads_top.php -->
+<!--/ included content-->
+          <div id="content" class="clear">
+            <a id="j_content"></a>
+            <!--topicViewTemplate-->
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+	ipb.topic.inSection = 'topicview';
+	ipb.topic.topic_id  = 37428;
+	ipb.topic.forum_id  = 48;
+	ipb.topic.start_id  = 0;
+	// Editor JS: Only needs to be done once per page
+	ipb.editor_values.get('templates')['link'] = new Template("<label for='#{id}_url'>URL</label><input type='text' class='input_text' id='#{id}_url' value='http://' tabindex='10' /><label for='#{id}_urltext'>Link text</label><input type='text' class='input_text _select' id='#{id}_urltext' value='My link' tabindex='11' /><input type='submit' class='input_submit' value='Insert Link' tabindex='12' />");
+ipb.editor_values.get('templates')['image'] = new Template("<label for='#{id}_img'>Image URL</label><input type='text' class='input_text' id='#{id}_img' value='http://' tabindex='10' /><input type='submit' class='input_submit' value='Insert Image' tabindex='11' />");
+ipb.editor_values.get('templates')['email'] = new Template("<label for='#{id}_email'>Email Address</label><input type='text' class='input_text' id='#{id}_email' tabindex='10' /><label for='#{id}_emailtext'>Link text</label><input type='text' class='input_text _select' id='#{id}_emailtext' value='Email me' tabindex='11' /><input type='submit' class='input_submit' value='Insert Email' tabindex='12' />");
+ipb.editor_values.get('templates')['media'] = new Template("<label for='#{id}_media'>Media URL</label><input type='text' class='input_text' id='#{id}_media' value='http://' tabindex='10' /><input type='submit' class='input_submit' value='Insert Media' tabindex='11' />");
+ipb.editor_values.get('templates')['generic'] = new Template("<div class='rte_title'>#{title}</div><strong>Example</strong><pre>#{example}</pre><label for='#{id}_option' class='optional'>#{option_text}</label><input type='text' class='input_text optional' id='#{id}_option' tabindex='10' /><label for='#{id}_text'>#{value_text}</label><input type='text' class='input_text _select' id='#{id}_text' tabindex='11' /><input type='submit' class='input_submit' value='Add' tabindex='12' />");
+ipb.editor_values.get('templates')['togglesource'] = new Template("<fieldset id='#{id}_ts_controls' class='submit' style='text-align: left'><input type='button' class='input_submit' value='Update' id='#{id}_ts_update' />&nbsp;&nbsp;&nbsp; <a href='#' id='#{id}_ts_cancel' class='cancel'>Cancel Source Edit</a></fieldset>");
+	
+ipb.editor_values.get('templates')['toolbar'] = new Template("<ul id='#{id}_toolbar_#{toolbarid}' class='toolbar' style='display: none'>#{content}</ul>");
+ipb.editor_values.get('templates')['button'] = new Template("<li><span id='#{id}_cmd_custom_#{cmd}' class='rte_control rte_button specialitem' title='#{title}'><img src='http://cdn.dreamincode.net/forums/public/style_images/master/rte_icons/#{img}' alt='Icon' /></span></li>");
+ipb.editor_values.get('templates')['menu_item'] = new Template("<li id='#{id}_cmd_custom_#{cmd}' class='specialitem clickable'>#{title}</li>");
+ipb.editor_values.get('templates')['togglesource'] = new Template("<fieldset id='#{id}_ts_controls' class='submit' style='text-align: left'><input type='button' class='input_submit' value='Update' id='#{id}_ts_update' />&nbsp;&nbsp;&nbsp; <a href='#' id='#{id}_ts_cancel' class='cancel'>Cancel Source Edit</a></fieldset>");
+ipb.editor_values.get('templates')['emoticons_showall'] = new Template("<input class='input_submit emoticons' type='button' id='#{id}_all_emoticons' value='Show all emoticons' />");
+ipb.editor_values.get('templates')['emoticon_wrapper'] = new Template("<h4><span>Emoticons</span></h4><div id='#{id}_emoticon_holder' class='emoticon_holder'></div>");
+
+// Add smilies into the mix
+ipb.editor_values.set( 'show_emoticon_link', false );
+
+ipb.editor_values.set( 'bbcodes', $H({"snapback":{"id":"1","title":"Post Snap Back","desc":"This tag displays a little linked image which links back to a post - used when quoting posts from the board. Opens in same window by default.","tag":"snapback","useoption":"0","example":"[snapback]100[/snapback]","switch_option":"0","menu_option_text":"","menu_content_text":"","single_tag":"0","optional_option":"0","image":""},"topic":{"id":"5","title":"Topic Link","desc":"This tag provides an easy way to link to a topic","tag":"topic","useoption":"1","example":"[topic=1]Click me![/topic]","switch_option":"0","menu_option_text":"Enter the topic ID","menu_content_text":"Enter the title for this link","single_tag":"0","optional_option":"0","image":""},"post":{"id":"6","title":"Post Link","desc":"This tag provides an easy way to link to a post.","tag":"post","useoption":"1","example":"[post=1]Click me![/post]","switch_option":"0","menu_option_text":"Enter the Post ID","menu_content_text":"Enter the title for this link","single_tag":"0","optional_option":"0","image":""},"spoiler":{"id":"7","title":"Spoiler","desc":"Spoiler tag","tag":"spoiler","useoption":"0","example":"[spoiler]Some hidden text[/spoiler]","switch_option":"0","menu_option_text":"","menu_content_text":"Enter the text to be masked","single_tag":"0","optional_option":"0","image":""},"acronym":{"id":"8","title":"Acronym","desc":"Allows you to make an acronym that will display a description when moused over","tag":"acronym","useoption":"1","example":"[acronym='Laugh Out Loud']lol[/acronym]","switch_option":"0","menu_option_text":"Enter the description for this acronym (EG: Laugh Out Loud)","menu_content_text":"Enter the acronym (EG: lol)","single_tag":"0","optional_option":"0","image":""},"hr":{"id":"12","title":"Horizontal Rule","desc":"Adds a horizontal rule to separate text","tag":"hr","useoption":"0","example":"[hr]","switch_option":"0","menu_option_text":"","menu_content_text":"","single_tag":"1","optional_option":"0","image":""},"php":{"id":"14","title":"PHP Code","desc":"Allows you to enter PHP code into a formatted/highlighted syntax box","tag":"php","useoption":"0","example":"[php]$variable = true;\n\nprint_r($variable);[/php]","switch_option":"0","menu_option_text":"","menu_content_text":"","single_tag":"0","optional_option":"0","image":""},"html":{"id":"15","title":"HTML Code","desc":"Allows you to enter formatted/syntax-highlighted HTML code","tag":"html","useoption":"0","example":"[html]<body>\n <div class='outer'>\n  <p>Hello World</p>\n </div>\n</body>[/html]","switch_option":"0","menu_option_text":"","menu_content_text":"","single_tag":"0","optional_option":"0","image":""},"sql":{"id":"16","title":"SQL Code","desc":"Allows you to enter formatted/syntax-highlighted SQL code","tag":"sql","useoption":"0","example":"[sql]SELECT p.*, t.* FROM posts p LEFT JOIN topics t ON t.tid=p.topic_id WHERE t.tid=7[/sql]","switch_option":"0","menu_option_text":"","menu_content_text":"","single_tag":"0","optional_option":"0","image":""},"xml":{"id":"17","title":"XML Code","desc":"Allows you to enter formatted/syntax-highlighted XML code","tag":"xml","useoption":"0","example":"[xml]<outer>\n <inner>\n  <tag param='1'>Test</tag>\n </inner>\n</outer>[/xml]","switch_option":"0","menu_option_text":"","menu_content_text":"","single_tag":"0","optional_option":"0","image":""},"member":{"id":"31","title":"Member","desc":"Given a member name, a link is automatically generated to the member's profile","tag":"member","useoption":"1","example":"[member=skyhawk133] runs this site.","switch_option":"0","menu_option_text":"Input Username of Member","menu_content_text":"","single_tag":"1","optional_option":"0","image":"memberbbcode.png"},"extract":{"id":"33","title":"Extract Blog Entry","desc":"This will allow users to define an extract for an entry. Only this piece of the entry will be displayed on the main blog page and will show up in the RSS feed.","tag":"extract","useoption":"0","example":"[extract]This is an example![/extract]","switch_option":"0","menu_option_text":"","menu_content_text":"","single_tag":"0","optional_option":"0","image":""},"blog":{"id":"34","title":"Blog Link","desc":"This tag provides an easy way to link to a blog.","tag":"blog","useoption":"1","example":"[blog=100]Click me![/blog]","switch_option":"0","menu_option_text":"","menu_content_text":"","single_tag":"0","optional_option":"0","image":""},"entry":{"id":"35","title":"Blog Entry Link","desc":"This tag provides an easy way to link to a blog entry.","tag":"entry","useoption":"1","example":"[entry=100]Click me![/entry]","switch_option":"0","menu_option_text":"","menu_content_text":"","single_tag":"0","optional_option":"0","image":""},"twitter":{"id":"36","title":"Twitter","desc":"A tag to link to a user's twitter account","tag":"twitter","useoption":"0","example":"[twitter]userName[/twitter]","switch_option":"0","menu_option_text":"","menu_content_text":"","single_tag":"0","optional_option":"0","image":"twitter.png"},"inline":{"id":"37","title":"Inline Code","desc":"Formats code inline instead of in a seperate code box. ","tag":"inline","useoption":"0","example":"[inline]style=\"font-size: 12px;\"[/inline]","switch_option":"0","menu_option_text":"","menu_content_text":"","single_tag":"0","optional_option":"0","image":""},"il":{"id":"38","title":"Abbreviated Inline (IL)","desc":"Abbreviated version of the [inline] tag. ","tag":"il","useoption":"0","example":"[il]Code Here[/il]","switch_option":"0","menu_option_text":"","menu_content_text":"","single_tag":"0","optional_option":"0","image":"il2.png"},"code":{"id":"41","title":"Code","desc":"Allows you to enter general code","tag":"code","useoption":"1","example":"[code]$text = 'Some long code here';[/code]","switch_option":"0","menu_option_text":"","menu_content_text":"","single_tag":"0","optional_option":"1","image":""}}) );
+	ipb.vars['emoticon_url'] = "http://cdn.dreamincode.net/forums/public/style_emoticons/default";
+	//Search Setup
+	ipb.vars['search_type']			= 'forum';
+	ipb.vars['search_type_id']		= 48;
+	ipb.vars['search_type_2']		= 'topic';
+	ipb.vars['search_type_id_2']	= 37428;
+//]]>
+</script>
+
+
+
+<div class="topic_controls">
+		<ul class="pagination left">
+		<li class="total">(2 Pages)</li>
+		<li class="pagejump clickable pj0090660001" id="anonymous_element_1">
+			<img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/dropdown.png" alt="+">
+			<script type="text/javascript">
+				ipb.global.registerPageJump( '0090660001', { url: "http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/", stKey: 'st', perPage: 15, totalPages: 2 } );
+			</script>
+		</li>
+		
+		
+		
+			
+				
+					<li class="active">1</li>
+				
+			
+
+				
+					<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/page__st__15" title="2">2</a></li>
+				
+			
+		
+		
+			<li class="next"><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/page__st__15" title="Next page" rel="next">&#8594;</a></li>
+		
+		
+	</ul>
+					
+	</div>
+<div class="topic hfeed">
+	<h2 class="maintitle">
+		<span class="main_topic_title">
+			<a href="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code.htm" style="text-decoration: none;">Converting and Evaluating Infix, Postfix and Prefix Expressions in C</a>
+			
+		</span>
+		<!-- SKINNOTE: Need to fill in proper URL for topic rating -->
+		<span class="rating">Rate Topic:
+				<a href="http://www.dreamincode.net/forums/index.php?app=forums&module=extras&section=rating&t=37428&rating=1" id="topic_rate_1" title="Rate topic 1 star"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/bullet_star.png" alt="*" class="rate_img"></a><a href="http://www.dreamincode.net/forums/index.php?app=forums&module=extras&section=rating&t=37428&rating=2" id="topic_rate_2" title="Rate topic 2 stars"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/bullet_star.png" alt="*" class="rate_img"></a><a href="http://www.dreamincode.net/forums/index.php?app=forums&module=extras&section=rating&t=37428&rating=3" id="topic_rate_3" title="Rate topic 3 stars"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/bullet_star.png" alt="*" class="rate_img"></a><a href="http://www.dreamincode.net/forums/index.php?app=forums&module=extras&section=rating&t=37428&rating=4" id="topic_rate_4" title="Rate topic 4 stars"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/bullet_star.png" alt="*" class="rate_img"></a><a href="http://www.dreamincode.net/forums/index.php?app=forums&module=extras&section=rating&t=37428&rating=5" id="topic_rate_5" title="Rate topic 5 stars"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/bullet_star.png" alt="*" class="rate_img"></a>
+				<span id="rating_text">
+					<span id="rating_hits">6</span> Votes
+					
+				</span>
+				<script type="text/javascript">
+				//<![CDATA[
+					rating = new ipb.rating( 'topic_rate_', { 
+										url: 'http://www.dreamincode.net/forums/index.php?app=forums&module=ajax&section=topics&do=rateTopic&t=37428&md5check=' + ipb.vars['secure_hash'],
+										cur_rating: 5,
+										rated: 0,
+										allow_rate: 0,
+										multi_rate: 1,
+										show_rate_text: true
+									  } );
+				//]]>
+				</script>
+			<br>
+
+
+
+
+</span>
+	</h2>
+	
+	
+	
+	
+	
+
+  	<!-- topic header ads -->
+	
+<!-- skinnote: Posts by ignored users are not hidden, check _ignored -->
+	
+
+	
+		 
+    
+		<!--Begin Msg Number 278982 - 1-->
+		<div class="post_block hentry clear  with_rep" id="post_id_278982">
+			<a id="entry278982"></a>
+			
+			
+			
+			
+			<div class="post_wrap">
+				
+					<h3>
+				
+						<span class="post_id">
+							<a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/page__view__findpost__p__278982" rel="bookmark" title="Link to post #1">#1</a>
+						</span>
+				<span class="author vcard">
+								<a class="url fn" href="http://www.dreamincode.net/forums/user/3388-born2c0de/">born2c0de</a>
+								&nbsp;<a href="http://www.dreamincode.net/forums/user/3388-born2c0de/page__f__48" class="__user __id3388 __fid48" title="View Profile"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/user_popup.png" alt="Icon"></a>
+					
+								<img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/user_off.png" alt="User is offline" title="User is offline">
+					
+							</span>
+
+				
+					</h3>
+				<div class="author_info">
+					<!--userInfoPane-->
+<ul class="user_details">
+		
+			<li class="avatar"><a href="http://www.dreamincode.net/forums/user/3388-born2c0de/" title="View Profile"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/55d8bbada932e15aac2faa5b14c41b26" alt=""></a></li>
+		
+		
+			<li class="title">printf("I'm a %XR",195936478);</li>
+		
+		<li class="group_icon">
+			
+				<img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/alumni_group.gif" alt="member icon">
+			
+			</li>
+	</ul>
+	<br>
+		
+			<div class="reputation positive">
+		
+		
+		
+		<span class="number">Reputation: 176</span>
+			</div>
+	<div style="margin: 0 auto;">
+		<ul class="user_controls clear">
+			
+			
+			
+				<li><a href="http://www.dreamincode.net/forums/index.php?app=blog&module=display&section=blog&mid=3388" title="View blog"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/book_open.png" alt="View blog"></a></li>
+			
+			
+		</ul>
+	</div>
+	<ul class="user_fields">
+                
+		
+			<li>
+				<span class="ft">Posts:</span>
+				<span class="fc">4,667</span>
+			</li>
+			<li>
+				<span class="ft">Joined:</span>
+				<span class="fc">26-November 04</span>
+			</li>
+		
+	</ul>   
+			
+	
+<!--userInfoPane-->
+				</div>
+				<div class="post_body">
+
+
+                                <!--<h1>Converting and Evaluating Infix, Postfix and Prefix Expressions in C</h1>-->
+
+
+					<p class="posted_info">
+						
+						
+						Posted <abbr class="published" title="2007-11-14T09:43:39+00:00">14 November 2007 - 02:43 AM</abbr>
+					</p>
+					<p class="rep_highlight"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/star_big.png" alt="*"><br>POPULAR</p>
+						<!-- rep_highlight  -->
+					<div class="post entry-content" id="">
+						<!--cached-Mon, 11 Nov 2013 03:11:02 +0000-->CONVERTING AND EVALUATING INFIX, POSTFIX AND PREFIX Exp<b></b>ressionS IN C     <br>
+                                                   - Sanchit Karve            <br>
+                                                                              <br>
+                                                       born2c0de              <br>
+                                               printf("I'm a %XR",195936478); <br>
+                                                                              <br>
+       CONTACT ME :       born2c0de AT dreamincode DOT net                    <br>
+<br>
+<br>
+<br>
+<br>
+                              CONTENTS<br>
+                              <br>
+I.         WHAT YOU NEED TO KNOW BEFORE YOU BEGIN<br>
+II.        INTRODUCTION<br>
+III.       INFIX, POSTFIX AND PREFIX<br>
+IV.        CONVERSION TECHNIQUES<br>
+IV.A       CONVERSION USING STACKS<br>
+IV.B       CONVERSION USING Exp<b></b>ression TREES<br>
+V.         EVALUATION TECHNIQUES<br>
+V.A        EVALUATING Exp<b></b>ression STRINGS<br>
+V.B        EVALUATING Exp<b></b>ression TREES<br>
+VI.        IMPROVEMENTS AND APPLICATIONS<br>
+VII.       CONTACT ME<br>
+<br>
+<br>
+<br>
+<strong class="bbc">I.         WHAT YOU NEED TO KNOW BEFORE YOU BEGIN</strong><br>
+<br>
+The reader is expected to have a basic knowledge of Stacks, Binary Trees and<br>
+their implementations in C.<br>
+You will also need a C/C++ Compiler to run and test the source code.<br>
+All the source code in this tutorial has been tested on Visual C++ 6.0, but<br>
+being standardized code it should work on any other C/C++ compiler.<br>
+<br>
+The Algorithms given in this tutorial are not written as per any standard.<br>
+Yet (as you shall see soon enough) it is simple and easy to understand.<br>
+I have intentionally written it in a manner which is easier to understand with<br>
+respect to my code.<br>
+Secondly, the example programs given below can be greatly optimized. But to<br>
+make the code easier to understand, I had to compromise on optimization.<br>
+So please don't email/PM me about this.<br>
+<br>
+All the C code given in this tutorial conform to C standards and is portable.<br>
+<br>
+<br>
+<br>
+<strong class="bbc">II.        INTRODUCTION</strong><br>
+<br>
+Consider a situation where you are writing a programmable calculator. If the <br>
+user types in 10 + 10, how would you compute a result of the exp<b></b>ression?<br>
+You might have a solution for this simple exp<b></b>ression.<br>
+But what if he types in 3 * 2 / (5 + 45) % 10 ?<br>
+What would you do then?<br>
+<br>
+There's no need to think about how you're going to compute the result because no <br>
+matter what you do, it won't be the best algorithm for calculating exp<b></b>ressions. <br>
+That is because there is a lot of overhead in computing the result for <br>
+exp<b></b>ressions which are expressed in this form; which results in a loss of <br>
+efficiency.<br>
+<br>
+The exp<b></b>ression that you see above is known as Infix Notation. It is a convention <br>
+which humans are familiar with and is easier to read. But for a computer, <br>
+calculating the result from an exp<b></b>ression in this form is difficult. Hence the <br>
+need arises to find another suitable system for representing arithmetic<br>
+exp<b></b>ressions which can be easily processed by computing systems.<br>
+The Prefix and Postfix Notations make the evaluation procedure really simple.<br>
+<br>
+But since we can't expect the user to type an exp<b></b>ression in either prefix or <br>
+postfix, we must convert the infix exp<b></b>ression (specified by the user) into<br>
+prefix or postfix before processing it.<br>
+<br>
+This means that your program would have to have two separate functions, one to<br>
+convert the infix exp<b></b>ression to post or prefix and the second to compute the<br>
+result from the converted exp<b></b>ression.<br>
+<br>
+This is what the tutorial is about. This tutorial will teach you the different <br>
+techniques for converting infix exp<b></b>ression to pre/postfix and then evaluate the<br>
+converted exp<b></b>ression to compute the result. You will be introduced to the<br>
+conversion techniques first and later move on to writing the exp<b></b>ression<br>
+evaluator functions.<br>
+<br>
+Once you read the tutorial, you will be ready to write your own programmable<br>
+calculator and more.<br>
+<br>
+Let us first introduce ourselves to the infix, postfix and prefix notations.<br>
+<br>
+<br>
+<strong class="bbc">III.       INFIX, POSTFIX AND PREFIX</strong><br>
+<br>
+Consider a simple exp<b></b>ression : A + B<br>
+This notation is called Infix Notation.<br>
+<br>
+A + B in Postfix notation is A B +<br>
+<br>
+As you might have noticed, in this form the operator is placed after the<br>
+operands (Hence the name 'post'). Postfix is also known as Reverse Polish <br>
+Notation.<br>
+Similarly for Infix, the operator is placed INside the operands.<br>
+<br>
+Likewise the equivalent exp<b></b>ression in prefix would be + A B, where the operator<br>
+precedes the operands.<br>
+<br>
+So if X1 and X2 are two operands and OP is a given operator then<br>
+<p class="citation">Quote</p><div class="blockquote"><div class="quote">infix              postfix            prefix<br>
+X1 OP X2  =   X1 X2 OP  =   OP X1 X2</div></div><br>
+We use infix notation for representing mathematical operations or for manually<br>
+performing calculations, since it is easier to read and comprehend.<br>
+But for computers to perform quick calculations, they must work on prefix or<br>
+postfix exp<b></b>ressions. You'll soon find out why once you understand how<br>
+exp<b></b>ressions are evaluated.<br>
+<br>
+Now let's take a slightly complicated exp<b></b>ression : A + B / C<br>
+How do we convert this infix exp<b></b>ression into postfix?<br>
+For this we need to use the BODMAS rule. (Remember?)<br>
+This rule states that each operator has its own priority and the operators with<br>
+the highest priority are evaluated first. The operator priority in Descending<br>
+order is BODMAS which is:<br>
+<br>
+    B     O         D              M              A            S<br>
+ Bracket Open -&gt; Division -&gt; Multiplication -&gt; Addition -&gt; Subtraction<br>
+[MAX. PRIORITY]                                          [MIN. PRIORITY]<br>
+<br>
+Hence, in the preceding example, B / C is evaluated first and the result is<br>
+added to A.<br>
+<br>
+To convert A + B / C into postfix, we convert one operation at a time. The<br>
+operators with maximum priority are converted first followed by those which are<br>
+placed lower in the order. Hence, A + B / C can be converted into postfix in<br>
+just X steps.<br>
+<br>
+:: A + B / C      (First Convert B / C -&gt; B C /)<br>
+1: A + B C /      (Next Operation is A + (BC/) -&gt; A BC/ +<br>
+2: A B C / +      (Resultant Postfix Form)<br>
+<br>
+The same procedure is to be applied to convert infix into prefix except that<br>
+during conversion of a single operation, the operator is placed before the two<br>
+operands. Let's take the same example and convert it to Prefix Notation.<br>
+<br>
+:: A + B / C      (First Convert B / C -&gt; / B C)<br>
+1: A + / B C      (Next Operation is A + (/BC) -&gt; + A /BC +<br>
+2: + A / B C<br>
+<br>
+Sometimes, an exp<b></b>ression contains parenthesis like this: A + B * ( C + D )<br>
+Parenthesis are used to force a given priority to the exp<b></b>ression that it <br>
+encloses. In this case, C+D is calculated first, then multiplied to B and then<br>
+added to A. Without the parenthesis, B * C would have been evaluated first.<br>
+To convert an exp<b></b>ression with paranthesis, we first convert all exp<b></b>ressions that <br>
+are enclosed within the simple brackets like this:<br>
+[INFIX TO POSTFIX]<br>
+:: A + B * ( C + D )<br>
+1: A + B * C D +<br>
+2: A + B C D + *<br>
+3: A B C D + * +<br>
+<br>
+Once an exp<b></b>ression has been converted into postfix or prefix, there is no need <br>
+to include the parenthesis since the priority of operations is already taken<br>
+care of in the final exp<b></b>ression.<br>
+<br>
+<strong class="bbc">IMPORTANT:</strong><br>
+Keep in mind that converting this exp<b></b>ression back to infix would result in the<br>
+same original infix exp<b></b>ression without the paranthesis, which would ruin the<br>
+result of the exp<b></b>ression.<br>
+Only the Prefix and Postfix forms are capable of preserving the priority of<br>
+operations and are hence used for evaluating exp<b></b>ressions instead of infix.<br>
+<br>
+<strong class="bbc">IV.        CONVERSION TECHNIQUES</strong><br>
+<br>
+Now that you know what infix, prefix and postfix operations are, let us see how<br>
+we can programmatically convert exp<b></b>ressions from one form into another.<br>
+<br>
+This can be done by various methods but I'll be explaining the two most common<br>
+techniques:<br>
+           1)    USING STACKS<br>
+           2)    USING Exp<b></b>ression TREES<br>
+<br>
+Let us study the first technique.<br>
+<br>
+<strong class="bbc">IV.A       CONVERSION USING STACKS</strong><br>
+<br>
+I shall be demonstrating this technique to convert an infix exp<b></b>ression to a<br>
+postfix exp<b></b>ression.<br>
+In this method, we read each character one by one from the infix exp<b></b>ression and<br>
+follow a certain set of steps. The Stack is used to hold only the operators of<br>
+the exp<b></b>ression. This is required to ensure that the priority of operators is<br>
+taken into consideration during conversion.<br>
+<br>
+Before you take a look at the code, read the Algorithm given below so that you<br>
+can concentrate on the technique rather than the C code. It will be much easier<br>
+to comprehend the code once you know what it is supposed to do.<br>
+<br>
+The algorithm below does not follow any specific standard<br>
+<br>
+Here's the Algorithm to the Infix to Prefix Convertor Function:<br>
+<br>
+<pre class="; brush: cpp">Algorithm infix2postfix(infix exp<b></b>ression string, postfix exp<b></b>ression string)
+{
+   char *i,*p;
+
+   i = first element in infix exp<b></b>ression
+   p = first element in postfix exp<b></b>ression
+
+   while i is not null
+   {
+	  while i is a space or tab
+	  {
+		 increment i to next character in infix exp<b></b>ression;
+	  }
+
+	  if( i is an operand )
+	  {
+		 p = i;
+		 increment i to next character in infix exp<b></b>ression;
+		 increment p to next character in postfix exp<b></b>ression;
+	  }
+
+	  if( i is '(' )
+	  {
+		 stack_push(i);
+		 increment i to next character in infix exp<b></b>ression;
+	  }
+
+	  if( i is ')' )
+	  {
+		 while( element at top of stack != '(' )
+		 {
+			p = element at top of stack;
+			increment p to next character in postfix exp<b></b>ression;
+		 }
+		 increment i to next character in infix exp<b></b>ression;
+	  }
+
+	  if( i is an operator )
+	  {
+		 if( stack is empty )
+			 stack_push(i);
+		 else
+		 {
+
+			while priority(element at top of stack) &gt;= priority(i)
+			{
+			   p = element at top of stack;
+			   increment p to next character in postfix exp<b></b>ression;
+			}
+			stack_push(i);
+		 }
+		 increment i to next character in infix exp<b></b>ression;
+	  }
+   }
+   while stack is not empty
+   {
+	  p = stack_pop()
+	  increment p to next character in postfix exp<b></b>ression;
+   }
+   p = '\0';
+}
+</pre><br>
+<br>
+Try converting an infix exp<b></b>ression A + B / C to postfix on paper using the above<br>
+algorithm and check if you're getting the correct result.<br>
+<br>
+Now you can see how the above algorithm is implemented in C. In the following C<br>
+code, I have added a 'whitespace adder' feature to the infix2postfix() function.<br>
+If the third parameter is 0, A + B / C will be converted as ABC/+<br>
+If the third parameter is 1, A + B / C will be converted as A B C / +<br>
+<br>
+This doesn't seem like a big deal, does it? <br>
+But in actual practice we will be dealing with numbers as well. Which means that <br>
+32 + 23 would be converted to 3223+. This could mean 3 + 223, 32 + 23 or 322 +3.<br>
+Hence to prevent such cases, pass 1 as the third parameter to get 32 23 +.<br>
+<br>
+Here's the Code:<br>
+<pre class="cpp; brush: cpp">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;ctype.h&gt;
+
+#define MAX 10
+#define EMPTY -1
+
+struct stack
+{
+	char data[MAX];
+	int top;
+};
+
+int isempty(struct stack *s)
+{
+	return (s-&gt;top == EMPTY) ? 1 : 0;
+}
+
+void emptystack(struct stack* s)
+{
+	s-&gt;top=EMPTY;
+}
+
+void push(struct stack* s,int item)
+{
+	if(s-&gt;top == (MAX-1))
+	{
+		printf("\nSTACK FULL");
+	}
+	else
+	{
+		++s-&gt;top;
+		s-&gt;data[s-&gt;top]=item;
+	}
+}
+
+char pop(struct stack* s)
+{
+	char ret=(char)EMPTY;
+	if(!isempty(s))
+	{
+		ret= s-&gt;data[s-&gt;top];
+		--s-&gt;top;
+	}
+	return ret;
+}
+
+void display(struct stack s)
+{
+	while(s.top != EMPTY)
+	{
+		printf("\n%d",s.data[s.top]);
+		s.top--;
+	}
+}
+
+int isoperator(char e)
+{
+	if(e == '+' || e == '-' || e == '*' || e == '/' || e == '%')
+		return 1;
+	else
+		return 0;
+}
+
+
+int priority(char e)
+{
+	int pri = 0;
+
+	if(e == '*' || e == '/' || e =='%')
+		pri = 2;
+	else
+	{
+		if(e == '+' || e == '-')
+			pri = 1;
+	}
+	return pri;
+}
+
+void infix2postfix(char* infix, char * postfix, int insertspace)
+{
+	char *i,*p;
+	struct stack X;
+	char n1;
+	emptystack(&amp;X);
+	i = &amp;infix[0];
+	p = &amp;postfix[0];
+
+	while(*i)
+	{
+		while(*i == ' ' || *i == '\t')
+		{
+			i++;
+		}
+
+		if( isdigit(*i) || isalpha(*i) )
+		{
+			while( isdigit(*i) || isalpha(*i))
+			{
+				*p = *i;
+				p++;
+				i++;
+			}
+			/*SPACE CODE*/
+			if(insertspace)
+			{
+				*p = ' ';
+				p++;
+			}
+			/*END SPACE CODE*/
+		}
+
+		if( *i == '(' )
+		{
+			push(&amp;X,*i);
+			i++;
+		}
+
+		if( *i == ')')
+		{
+			n1 = pop(&amp;X);
+			while( n1 != '(' )
+			{
+				*p = n1;
+				p++;
+				/*SPACE CODE*/
+				if(insertspace)
+				{
+					*p = ' ';
+					p++;
+				}
+				/*END SPACE CODE*/
+				n1 = pop(&amp;X);
+			}
+			i++;
+		}
+
+		if( isoperator(*i) )
+		{
+			if(isempty(&amp;X))
+				push(&amp;X,*i);
+			else
+			{
+				n1 = pop(&amp;X);
+				while(priority(n1) &gt;= priority(*i))
+				{
+					*p = n1;
+					p++;
+					/*SPACE CODE*/
+					if(insertspace)
+					{
+						*p = ' ';
+						p++;
+					}
+					/*END SPACE CODE*/
+					n1 = pop(&amp;X);
+				}
+				push(&amp;X,n1);
+				push(&amp;X,*i);
+			}
+			i++;
+		}
+	}
+	while(!isempty(&amp;X))
+	{
+		n1 = pop(&amp;X);
+		*p = n1;
+		p++;
+		/*SPACE CODE*/
+		if(insertspace)
+		{
+			*p = ' ';
+			p++;
+		}
+		/*END SPACE CODE*/
+	}
+	*p = '\0';
+}
+
+int main()
+{
+	char in[50] = { 0 },post[50] = { 0 };
+
+	iprintf("Enter Infix Exp<b></b>ression : ");
+	
+	fgets(in, sizeof(in), stdin);
+        in[strlen(in) - 1] = '\0';
+	infix2postfix(&amp;in[0],&amp;post[0],1);
+	printf("Postfix Exp<b></b>ression is : %s\n",&amp;post[0]);
+
+	return 0;
+}
+/* SAMPLE OUTPUT:
+Enter Infix Exp<b></b>ression : A + B + C / (E - F)
+Postfix Exp<b></b>ression is : A B + C E F - / + &nbsp;
+*/
+
+</pre><br>
+Now try writing a program to convert infix to prefix as an exercise.<br>
+<br>
+<strong class="bbc">IV.B       CONVERSION USING Exp<b></b>ression TREES</strong><br>
+<br>
+Exp<b></b>ression Trees are a slight variation of a Binary Tree in which every node in<br>
+an exp<b></b>ression tree is an element of an exp<b></b>ression.<br>
+It is created in such a way that an inorder traversal would result in an infix<br>
+exp<b></b>ression, preorder in prefix and postorder in postfix.<br>
+<br>
+The main advantages of an exp<b></b>ression tree over the previous technique are pretty<br>
+obvious, easier evaluation procedures and efficiency.<br>
+The evaluation procedure of both the conversion techniques will be discussed in<br>
+the next section.<br>
+<br>
+The previous technique gives the resultant postfix exp<b></b>ression as a string. If we<br>
+now wish to convert the resultant postfix exp<b></b>ression into prefix, we must pass<br>
+the entire string to another (long) function which would provide the result into<br>
+another string. If at any given point we wish to have all three forms of an<br>
+exp<b></b>ression, we would need three strings (of outrageously long lengths for<br>
+longer exp<b></b>ressions) whereas if we use an Exp<b></b>ression Tree, we don't need anything<br>
+else. We can choose which exp<b></b>ression we want by choosing the appropriate<br>
+traversal method.<br>
+In short, unlike a string an Exp<b></b>ression Tree can be interpreted as either infix,<br>
+postfix or prefix without changing the structure of the tree.<br>
+<br>
+Consider an Infix exp<b></b>ression : A + B / C<br>
+This exp<b></b>ression would be represented in an Exp<b></b>ression Tree as follows:<br>
+<br>
+<p class="citation">Quote</p><div class="blockquote"><div class="quote">{+} (ROOT)<br>
+            | |<br>
+         ---  ---<br>
+         |      |<br>
+        {A}    {/}<br>
+               | |<br>
+             --- ---<br>
+             |     |<br>
+            {B}   {C}</div></div><br>
+Let us Traverse this Exp<b></b>ression Tree in Inorder, Preorder and Postorder.<br>
+Inorder   : A + B / C<br>
+Preorder  : + A / B C<br>
+Postorder : A B C / +<br>
+<br>
+As you can see, Inorder Traversal gives us the Infix exp<b></b>ression, Preorder the <br>
+Prefix exp<b></b>ression and Postorder gives the Postfix exp<b></b>ression. Isn't this<br>
+amazing? We don't even need a (long and complicated) conversion technique!!<br>
+<br>
+The only thing that we need to do is convert an exp<b></b>ression string into an <br>
+Exp<b></b>ression Tree. This procedure is somewhat complex and requires a Stack as well.<br>
+<br>
+This time I will demonstrate this technique to convert a Postfix Exp<b></b>ression to <br>
+an Exp<b></b>ression Tree.<br>
+Here's the algorithm for converting a postfix exp<b></b>ression string to an Exp<b></b>ression <br>
+Tree.<br>
+<br>
+<pre class="; brush: cpp">Algorithm postfix2exptree(postfix string, root&lt;i.e. ptr to root node of exp tree&gt;)
+{
+   NODES newnode,op1,op2;
+
+   p = first element in postfix exp<b></b>ression;
+   while(p is not null)
+   {
+	  while(p is a space or a tab)
+	  {
+		 increment p to next character in postfix exp<b></b>ression;
+	  }
+	  
+	  if( p is an operand )
+	  {
+		 newnode = ADDRESS OF A NEW NODE;
+		 newnode-&gt;element = p;
+		 newnode-&gt;left = NULL;
+		 newnode-&gt;right = NULL;
+		 stack_push(newnode);
+	  }
+	  else
+	  {
+		 op1 = stack_pop();
+		 op2 = stack_pop();
+		 newnode = ADDRESS OF A NEW NODE;
+		 newnode-&gt;element = p;
+		 newnode-&gt;left = op2;
+		 newnode-&gt;right = op1;
+		 stack_push(newnode);
+	  }
+	  increment p to next character in postfix exp<b></b>ression;
+   }
+   root = stack_pop();
+}
+</pre><br>
+After the function is finished with execution, the root pointer would point to <br>
+the root node of the exp<b></b>ression tree.<br>
+Once again I'd like you to create an exp<b></b>ression tree of A B C * + using the<br>
+above algorithm on paper to understand how it works.<br>
+<br>
+And finally, the implementation in C:<br>
+<pre class="cpp; brush: cpp">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;ctype.h&gt;
+
+#define MAX 10
+#define EMPTY -1
+
+
+struct node
+{
+	char element;
+	struct node *left,*right;
+};
+
+struct stack
+{
+	struct node *data[MAX];
+	int top;
+};
+
+int isempty(struct stack *s)
+{
+	return (s-&gt;top == EMPTY) ? 1 : 0;
+}
+
+void emptystack(struct stack* s)
+{
+	s-&gt;top=EMPTY;
+}
+
+void push(struct stack* s, struct node *item)
+{
+	if(s-&gt;top == (MAX-1))
+	{
+		printf("\nSTACK FULL");
+	}
+	else
+	{
+		++s-&gt;top;
+		s-&gt;data[s-&gt;top]=item;
+
+	}
+}
+
+struct node* pop(struct stack* s)
+{
+	struct node *ret=NULL;
+	if(!isempty(s))
+	{
+		ret= s-&gt;data[s-&gt;top];
+		--s-&gt;top;
+	}
+	return ret;
+}
+
+void postfix2exptree(char* postfix, struct node **root)
+{
+	struct stack X;
+	struct node *newnode,*op1,*op2;
+	char *p;
+	p = &amp;postfix[0];
+	emptystack(&amp;X);
+	while(*p)
+	{
+
+		while(*p == ' ' || *p == '\t')
+		{
+			p++;
+		}
+
+		if(isalpha(*p) || isdigit(*p))
+		{
+			newnode = malloc(sizeof(struct node));
+			newnode-&gt;element = *p;
+			newnode-&gt;left = NULL;
+			newnode-&gt;right = NULL;
+			push(&amp;X,newnode);
+		}
+		else
+		{
+			op1 = pop(&amp;X);
+			op2 = pop(&amp;X);
+			newnode = malloc(sizeof(struct node));
+			newnode-&gt;element = *p;
+			newnode-&gt;left = op2;
+			newnode-&gt;right = op1;
+			push(&amp;X,newnode);
+		}
+		p++;
+	}
+	*root = pop(&amp;X);
+}
+
+void inorder(struct node *x)
+{
+	if(x != NULL)
+	{
+		inorder(x-&gt;left);
+		printf("%c ",x-&gt;element);
+		inorder(x-&gt;right);
+	}
+}
+
+void preorder(struct node *x)
+{
+	if(x != NULL)
+	{
+		printf("%c ",x-&gt;element);
+		preorder(x-&gt;left);
+		preorder(x-&gt;right);
+	}
+}
+
+void postorder(struct node *x)
+{
+	if(x != NULL)
+	{
+		postorder(x-&gt;left);
+		postorder(x-&gt;right);
+		printf("%c ",x-&gt;element);
+	}
+}
+
+int main()
+{
+	struct node *r;
+	postfix2exptree("A B C * +",&amp;r);
+	printf("Inorder = ");
+	inorder®;
+	printf("\nPreorder = ");
+	preorder®;
+	printf("\nPostorder = ");
+	postorder®;
+	return 0;
+}
+/* OUTPUT:
+Inorder = A + B * C
+Preorder = + A * B C
+Postorder = A B C * +
+*/
+</pre><br>
+<br>
+As you can see, once the exp<b></b>ression tree is built, the exp<b></b>ression can be<br>
+converted to any of the three forms by using an appropriate traversal method. I<br>
+hope you can now understand its true advantage.<br>
+<br>
+In this case since we were only dealing with alphabets (as variables in<br>
+the exp<b></b>ression), we chose a node structure like this:<br>
+<br>
+<pre class="cpp; brush: cpp">struct node
+{
+	char element;
+	struct node *left,*right;
+};
+</pre><br>
+<br>
+But in practice, we will be dealing with numbers (which will be more than a<br>
+character in length is stored as a set of characters). Hence we would need two<br>
+extra variables in the structure to hold the operator and the number as well as<br>
+another flag variable which states whether the node contains an element or an<br>
+operator. Hence the structure would look like this:<br>
+<br>
+<pre class="cpp; brush: cpp">struct node
+{
+	char kind;
+   char op;
+   int number; /* even float would do */
+	struct node *left,*right;
+};
+</pre><br>
+In this structure, if the node is to store an operator, it would store it in the <br>
+op variable. If the node is required to store a number, it would do so in the <br>
+number variable. If the node contains an operator the kind variable would have <br>
+the value 'O' (or anything you wish) and 'N' for a number.<br>
+Take care not to name the op variable as operator since this will lead to<br>
+compilation errors if compiled on a C++ compiler. C++ compilers won't compile<br>
+the code since operator is a keyword in the C++ Language.<br>
+Not many people (today) use Pure C Compilers to compile C code (you're probably <br>
+using a C++ Compiler right now too), it's best to avoid renaming it as operator.<br>
+<br>
+I have chosen a char data type since it consumes only 1 byte rather than 2/4<br>
+bytes for an int for 16/32-bit based programes. This would reduce the size of <br>
+the structure by 3 bytes.<br>
+<br>
+Since we're on the topic of efficiency, there is another improvement that we can <br>
+make to the structure definition.<br>
+<br>
+Each Node in an exp<b></b>ression tree can hold either an operator or a number, but not<br>
+both. Hence if an operator is stored in a node, 2/4 bytes of space is wasted for<br>
+the unused 'number' variable. If a node holds a number, there is a wastage of 1<br>
+byte for the unused op variable. How can we improve upon this structure design?<br>
+<br>
+The answer is Unions. Unions are user-defined data types that can contain only<br>
+one data element at a given time. The members of a union represent the kinds of<br>
+data the union can contain. An object of union type requires enough storage to<br>
+represent each member and hence its size is the same size of the largest member<br>
+in its member-list.<br>
+<br>
+This is what the improved structure definition looks like:<br>
+<pre class="cpp; brush: cpp">struct node
+{
+   char kind;
+   union element
+   {
+	  char op;
+	  int number;
+   };
+   struct node *left, *right;
+};
+</pre><br>
+<br>
+This is an ideal situation for using a union.<br>
+<br>
+As an exercise, try to write a function that builds an exp<b></b>ression tree for infix<br>
+and prefix exp<b></b>ression strings using the node structure that uses unions.<br>
+<br>
+<strong class="bbc">V.         EVALUATION TECHNIQUES</strong><br>
+<br>
+The Evaluation process is the easiest part of an exp<b></b>ression evaluator. Unlike<br>
+the conversion process, evaluation functions are relatively small and easy to<br>
+understand (and even write <img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/wink2.gif" class="bbc_emoticon" alt=";)"> )<br>
+<br>
+This is because now, we don't have to worry about the priority of operations<br>
+anymore. Remember that evaluation of an exp<b></b>ression is always performed on prefix<br>
+or postfix exp<b></b>ressions and never infix (this should be obvious by now).<br>
+<br>
+As usual, I'll be dividing this section into two sub-parts.<br>
+   V.A : EVALUATING Exp<b></b>ression STRINGS<br>
+   V.B : EVALUATING Exp<b></b>ression TREES<br>
+<br>
+<strong class="bbc">V.A        EVALUATING Exp<b></b>ression STRINGS</strong><br>
+<br>
+It is fairly simple to evaluate postfix/prefix exp<b></b>ression strings. The algorithm<br>
+for evaluating a postfix exp<b></b>ression is given below:<br>
+<br>
+<pre class="; brush: cpp">Algorithm evaluate(postfix exp<b></b>ression string)
+{
+   while current character in postfix string is not null
+   {
+	  x = next character in postfix string;
+
+	  if( x is an operand )
+		 stack_push(x);
+	  else
+	  {
+		 op1 = stack_pop();
+		 op2 = stack_pop();
+		 result = op2 &lt;operator&gt; op1;
+		 stack_push(result);
+	  }
+   }
+
+   result = stack_pop();
+   return result;
+}
+</pre><br>
+<br>
+Simple isn't it? Let us see it in action:<br>
+<pre class="cpp; brush: cpp">#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+#define MAX 50
+#define EMPTY -1
+
+struct stack
+{
+	int data[MAX];
+	int top;
+};
+
+void emptystack(struct stack* s)
+{
+	s-&gt;top = EMPTY;
+}
+
+void push(struct stack* s,int item)
+{
+	if(s-&gt;top == (MAX-1))
+	{
+		printf("\nSTACK FULL");
+	}
+	else
+	{
+		++s-&gt;top;
+		s-&gt;data[s-&gt;top]=item;
+	}
+}
+
+int pop(struct stack* s)
+{
+	int ret=EMPTY;
+	if(s-&gt;top == EMPTY)
+		printf("\nSTACK EMPTY");
+	else
+	{
+		ret= s-&gt;data[s-&gt;top];
+		--s-&gt;top;
+	}
+	return ret;
+}
+
+void display(struct stack s)
+{
+	while(s.top != EMPTY)
+	{
+		printf("\n%d",s.data[s.top]);
+		s.top--;
+	}
+}
+
+int evaluate(char *postfix)
+{
+	char *p;
+	struct stack stk;
+	int op1,op2,result;
+
+	emptystack(&amp;stk);
+	p = &amp;postfix[0];
+
+	while(*p != '\0')
+	{
+	   /* removes tabs and spaces */
+		while(*p == ' ' || *p == '\t')
+		{
+			p++;
+		}
+	  /* if is digit */
+		if(isdigit(*p))
+		{
+			push(&amp;stk,*p - 48);
+		}
+		else
+		{
+		   /* it is an operator */
+			op1 = pop(&amp;stk);
+			op2 = pop(&amp;stk);
+
+			switch(*p)
+			{
+				case '+':
+					result = op2 + op1;
+					break;
+
+				case '-':
+					result = op2 - op1;
+					break;
+
+				case '/':
+					result = op2 / op1;
+					break;
+
+				case '*':
+					result = op2 * op1;
+					break;
+
+				case '%':
+					result = op2 % op1;
+					break;
+
+				default:
+					printf("\nInvalid Operator");
+					return 0;
+			}
+			push(&amp;stk,result);
+		}
+		p++;
+	}
+	result = pop(&amp;stk);
+	return result;
+}
+
+int main()
+{
+	char exp[MAX];
+	printf("Enter Postfix Exp<b></b>ression : ");
+	fgets(exp, sizeof(exp), stdin);
+        exp[strlen(exp) - 1] = '\0';
+	printf("%s EQUALS %d\n",exp,evaluate(&amp;exp[0]));
+	return 0;
+}
+/* SAMPLE OUTPUT:
+Enter Postfix Exp<b></b>ression : 3 5 + 2 /
+3 5 + 2 / EQUALS 4
+*/
+</pre><br>
+<br>
+Now try writing an evaluator function for prefix exp<b></b>ressions.<br>
+<br>
+<strong class="bbc">V.B        EVALUATING Exp<b></b>ression TREES</strong><br>
+<br>
+Exp<b></b>ression trees are usually evaluated using recursion. The Recursive Evaluator <br>
+is extremely simple.<br>
+Here is the Algorithm:<br>
+<br>
+<pre class="; brush: cpp">Algorithm evaluatetree(Node x)
+{
+   if( x is an operator )
+   {
+	  op1 = evaluatetree(x.left);
+	  op2 = evaluatetree(x.right);
+	  result = op1 &lt;operator&gt; op2;
+	}
+	else
+	   return result; /* x is a number */
+}
+</pre><br>
+<br>
+That's It!!! And there's no need to write two separate functions for postfix and<br>
+prefix exp<b></b>ressions.<br>
+<br>
+Here's the Algorithm implemented in C code:<br>
+<pre class="cpp; brush: cpp">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;ctype.h&gt;
+
+#define MAX 10
+#define EMPTY -1
+
+struct node
+{
+	char kind;
+	char op;
+	int number;
+	struct node *left,*right;
+};
+
+struct stack
+{
+	struct node *data[MAX];
+	int top;
+};
+
+int isempty(struct stack *s)
+{
+	return (s-&gt;top == EMPTY) ? 1 : 0;
+}
+
+void emptystack(struct stack* s)
+{
+	s-&gt;top=EMPTY;
+}
+
+void push(struct stack* s, struct node *item)
+{
+	if(s-&gt;top == (MAX-1))
+	{
+		printf("\nSTACK FULL");
+	}
+	else
+	{
+		++s-&gt;top;
+		s-&gt;data[s-&gt;top]=item;
+
+	}
+}
+
+struct node* pop(struct stack* s)
+{
+	struct node *ret=NULL;
+	if(!isempty(s))
+	{
+		ret= s-&gt;data[s-&gt;top];
+		--s-&gt;top;
+	}
+	return ret;
+}
+
+void postfix2exptree(char* postfix, struct node **root)
+{
+	struct stack X;
+	struct node *newnode,*op1,*op2;
+	char numberextract[5];
+	char *p;
+
+	emptystack(&amp;X);
+	p = &amp;postfix[0];
+	strcpy(numberextract,"");
+	while(*p)
+	{
+
+		while(*p == ' ' || *p == '\t')
+		{
+			p++;
+		}
+
+		if(isdigit(*p))
+		{
+			while(isdigit(*p))
+			{
+				strcat(numberextract,p);
+				p++;
+			}
+
+			newnode = malloc(sizeof(struct node));
+			newnode-&gt;kind = 'N';
+			newnode-&gt;number = atoi(numberextract);
+			newnode-&gt;left = NULL;
+			newnode-&gt;right = NULL;
+			push(&amp;X,newnode);
+			strcpy(numberextract,"");
+		}
+		else
+		{
+			op1 = pop(&amp;X);
+			op2 = pop(&amp;X);
+			newnode = malloc(sizeof(struct node));
+			newnode-&gt;kind = 'O';
+			newnode-&gt;op = *p;
+			newnode-&gt;left = op2;
+			newnode-&gt;right = op1;
+			push(&amp;X,newnode);
+		}
+		p++;
+	}
+	*root = pop(&amp;X);
+}
+
+int evaluatetree(struct node *x)
+{
+   if( x-&gt;kind == 'O' )
+	{
+	  int op1 = evaluatetree( x-&gt;left );
+	  int op2 = evaluatetree( x-&gt;right );
+	  switch ( x-&gt;op )
+		{
+		 case '+':  return op1 + op2;
+		 case '-':  return op1 - op2;
+		 case '*':  return op1 * op2;
+		 case '/':  return op1 / op2;
+		 default:   return 0;
+	  }
+   }
+	else
+	   return (x-&gt;number);
+}
+
+void inorder(struct node *x)
+{
+	if(x != NULL)
+	{
+		inorder(x-&gt;left);
+
+		if(x-&gt;kind == 'O')
+			printf("%c ",x-&gt;op);
+		else
+			printf("%d ",x-&gt;number);
+
+		inorder(x-&gt;right);
+	}
+}
+
+void preorder(struct node *x)
+{
+	if(x != NULL)
+	{
+		if(x-&gt;kind == 'O')
+			printf("%c ",x-&gt;op);
+		else
+			printf("%d ",x-&gt;number);
+
+		preorder(x-&gt;left);
+		preorder(x-&gt;right);
+	}
+}
+
+void postorder(struct node *x)
+{
+	if(x != NULL)
+	{
+		postorder(x-&gt;left);
+		postorder(x-&gt;right);
+
+		if(x-&gt;kind == 'O')
+			printf("%c ",x-&gt;op);
+		else
+			printf("%d ",x-&gt;number);
+	}
+}
+
+int main()
+{
+	struct node *r;
+	postfix2exptree("100 50 - 2 /",&amp;r);
+	printf("Inorder = ");
+	inorder®;
+	printf("\nPreorder = ");
+	preorder®;
+	printf("\nPostprder = ");
+	postorder®;
+	printf("\nResult = %d\n",evaluatetree®);
+	return 0;
+}
+/* OUTPUT:
+Inorder = 100 - 50 / 2
+Preorder = / - 100 50 2
+Postprder = 100 50 - 2 /
+Result = 25
+*/
+</pre><br>
+<br>
+Since I can't ask you to write an prefix version of the evaluator, write the<br>
+same program using unions in the node structure as an exercise.<br>
+(Thought you could get away with it this time eh?) <img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/wink2.gif" class="bbc_emoticon" alt=";)"><br>
+<br>
+<strong class="bbc">VI.        IMPROVEMENTS AND APPLICATIONS</strong><br>
+<br>
+You should now have a basic idea about converting and evaluating arithmetic<br>
+exp<b></b>ressions in C. You can add a lot of improvements by further adding support<br>
+for more operators and functions such as sin(), cos(), log() etc in exp<b></b>ressions.<br>
+This is a little complicated but not as difficult as it may seem. Simply assign<br>
+a token to each function (like a single character 'S' for sine) and test for the<br>
+token during evaluation and perform the appropriate function.<br>
+<br>
+The whole idea of this tutorial is to give you an understanding of how<br>
+arithmetic exp<b></b>ressions are calculated by computers and embedded systems.<br>
+<br>
+Don't reinvent the wheel by writing your own exp<b></b>ression evaluators while writing<br>
+programs. Languages such as C/C++,Java,C# etc. have in-built or external<br>
+libraries that contain exp<b></b>ression evaluators. Infact, using these libraries is<br>
+recommended as they are more efficient and are less likely to be bugged.<br>
+<br>
+Casio Scientific Calculators and many more use such techniques to solve<br>
+arithmetic exp<b></b>ressions.<br>
+If you own a Casio fx-XXX MS/ES Series Calculator, you can even see that a stack<br>
+is being internally used (I currently use a Casio fx-991 ES).<br>
+If you key in a long exp<b></b>ression with loads of operators and parenthesis and<br>
+press the '=' key, you will get a "Stack Error" or "Stack Full" Error.<br>
+<br>
+Compilers also compute exp<b></b>ressions using these techniques too.<br>
+Almost every mathematical program makes use of this too (Eg. Mathematica and<br>
+MATLAB)<br>
+<br>
+That brings us to the end of this tutorial.<br>
+I hope you enjoyed reading this tutorial.<br>
+I also hope that you solve all the exercises <img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/wink2.gif" class="bbc_emoticon" alt=";)"><br>
+<br>
+<strong class="bbc">VII.       CONTACT ME</strong><br>
+<br>
+I had starting writing the tutorial ages back and had almost abandoned it. Later,<br>
+I hurriedly completed the tutorial so although I have read through the tutorial<br>
+and tested all the code, there are still likely to be spelling mistakes or typos.<br>
+The code is written in pure, portable C but is tested on on Visual C++ 6.0, so<br>
+if I haven't declared variables at the beginning of a function, do let me know.<br>
+<br>
+Please contact me if you find a bug or a typo or even if you need to clarify a<br>
+doubt.<br>
+Suggestions and Comments are welcome.<br>
+Irrespective of whether it's a suggestion, comment or a mistake, don't hesitate<br>
+to contact me on born2c0de AT dreamincode DOT net<br>
+You can also post a Reply to the thread where you found this Tutorial.
+						
+						<br>
+						<p class="edit">
+								This post has been edited by <b>JackOfAllTrades</b>: 19 November 2011 - 06:58 AM
+								
+									<br>
+									<span class="reason">Reason for edit:: Removed gets() and fflush(stdin)</span>
+								
+							</p>
+					</div>
+					
+
+
+                                <div id="div-gpt-ad-1326943007260-1" style="padding-left: 15px;">
+
+<!-- begin ad tag (tile=2) -->
+<script type="text/javascript">
+//<![CDATA[
+ord = window.ord || Math.floor(Math.random()*1E16);
+document.write('<script type="text/javascript" src="http://ad2.netshelter.net/adj/ns.dreamincode/general;ppos=btf;kw=;tile=2;sz=300x250;ord=' + ord + '?"><\/script>');
+//]]>
+</script><script type="text/javascript" src="http://ad2.netshelter.net/adj/ns.dreamincode/general;ppos=btf;kw=;tile=2;sz=300x250;ord=9154467610642314?"></script>
+<noscript>&lt;a href="http://ad2.netshelter.net/jump/ns.dreamincode/general;ppos=btf;kw=;tile=2;sz=300x250;ord=123456789?" target="_blank" &gt;&lt;img src="http://ad2.netshelter.net/ad/ns.dreamincode/general;ppos=btf;kw=;tile=2;sz=300x250;ord=123456789?" border="0" alt="" /&gt;&lt;/a&gt;</noscript>
+<!-- end ad tag -->
+
+</div>
+<br>
+
+				</div>
+			<div class="rep_bar clear right" id="rep_post_278982"><span style="float: left; margin-top: 10px; font-weight: bold;">
+
+Is This A Good Question/Topic?
+
+</span>
+					
+												
+				
+				
+					<span class="reputation positive rep_show clickable" title="Reputation" onclick="ipb.topic.repPopUp( this, 278982 );">
+				
+				
+						5
+					</span>
+<!-- REMOVED From Below: AND Array['member_id'] != 0 -->
+					<ul>
+						
+							<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#" class="rep_up" title="Vote this post up"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/add.png" alt="+"></a></li>
+						
+						
+						</ul>
+				</div>
+				<script type="text/javascript">
+					ipb.global.registerReputation( 'rep_post_278982', { app: 'forums', type: 'pid', typeid: '278982' }, parseInt('5') );
+				</script>
+				<ul class="post_controls">
+					
+					<li class="top hide"><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#top" class="top" title="Back to top">Back to top</a></li>
+					
+					
+						<li class="multiquote" id="multiq_278982" style="">
+					
+							<a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=278982" title="Quote this post with Multi-Quote"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> MultiQuote</a>
+						</li>
+					<li><a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=278982" title="Reply directly to this post"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> Quote + Reply</a></li>
+					
+					
+					<!-- Matt: Approve / unapprove post button -->
+					
+				</ul>
+				<script type="text/javascript">
+					// Show multiquote for JS browsers
+					$('multiq_278982').show();
+					
+					if( $('toggle_post_278982') )
+					{
+						$('toggle_post_278982').show();
+					}
+				</script>
+				
+			</div>
+		<!-- </if> -->			
+		</div>
+		
+		<hr>
+		
+	
+
+
+	
+		
+<h2 class="maintitle">
+		Replies To: Converting and Evaluating Infix, Postfix and Prefix Expressions in C
+</h2>	
+     
+    
+		<!--Begin Msg Number 416573 - 2-->
+		<div class="post_block hentry clear  with_rep" id="post_id_416573">
+			<a id="entry416573"></a>
+			
+			
+			
+			
+			<div class="post_wrap">
+				
+					<h3>
+				
+						<span class="post_id">
+							<a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/page__view__findpost__p__416573" rel="bookmark" title="Link to post #2">#2</a>
+						</span>
+				<span class="author vcard">
+								<a class="url fn" href="http://www.dreamincode.net/forums/user/16956-de-tutor/">de_tutor</a>
+								&nbsp;<a href="http://www.dreamincode.net/forums/user/16956-de-tutor/page__f__48" class="__user __id16956 __fid48" title="View Profile"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/user_popup.png" alt="Icon"></a>
+					
+								<img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/user_off.png" alt="User is offline" title="User is offline">
+					
+							</span>
+
+				
+					</h3>
+				<div class="author_info">
+					<!--userInfoPane-->
+<ul class="user_details">
+		
+			<li class="avatar"><a href="http://www.dreamincode.net/forums/user/16956-de-tutor/" title="View Profile"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/about_unknown.gif" width="64" height="64" alt=""></a></li>
+		
+		
+			<li class="title">New D.I.C Head</li>
+		
+		
+	</ul>
+	<br>
+		
+		
+		
+			<div class="reputation zero">
+		
+		<span class="number">Reputation: 0</span>
+			</div>
+	<div style="margin: 0 auto;">
+		<ul class="user_controls clear">
+			
+			
+			
+				<li><a href="http://www.dreamincode.net/forums/index.php?app=blog&module=display&section=blog&mid=16956" title="View blog"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/book_open.png" alt="View blog"></a></li>
+			
+			
+		</ul>
+	</div>
+	<ul class="user_fields">
+                
+		
+			<li>
+				<span class="ft">Posts:</span>
+				<span class="fc">6</span>
+			</li>
+			<li>
+				<span class="ft">Joined:</span>
+				<span class="fc">31-October 06</span>
+			</li>
+		
+	</ul>   
+			
+	
+<!--userInfoPane-->
+				</div>
+				<div class="post_body">
+
+
+  				<!--<h2>Re: Converting and Evaluating Infix, Postfix and Prefix Expressions in C</h2>-->
+
+
+					<p class="posted_info">
+						
+						
+						Posted <abbr class="published" title="2008-09-11T16:41:39+00:00">11 September 2008 - 09:41 AM</abbr>
+					</p>
+					
+					<div class="post entry-content" id="">
+						<!--cached-Mon, 11 Nov 2013 03:11:02 +0000-->Thank you very much.
+						
+						<br>
+						
+					</div>
+					
+
+
+				</div>
+			<div class="rep_bar clear right" id="rep_post_416573"><span style="float: left; margin-top: 10px; font-weight: bold;">
+
+Was This Post Helpful? 
+
+</span>
+					
+												
+				
+					<span class="reputation zero rep_show clickable" title="Reputation" onclick="ipb.topic.repPopUp( this, 416573 );">
+				
+				
+				
+						0
+					</span>
+<!-- REMOVED From Below: AND Array['member_id'] != 0 -->
+					<ul>
+						
+							<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#" class="rep_up" title="Vote this post up"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/add.png" alt="+"></a></li>
+						
+						
+							<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#" class="rep_down" title="Vote this post down"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/delete.png" alt="-"></a></li>
+						
+						</ul>
+				</div>
+				<script type="text/javascript">
+					ipb.global.registerReputation( 'rep_post_416573', { app: 'forums', type: 'pid', typeid: '416573' }, parseInt('0') );
+				</script>
+				<ul class="post_controls">
+					
+					<li class="top hide"><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#top" class="top" title="Back to top">Back to top</a></li>
+					
+					
+						<li class="multiquote" id="multiq_416573" style="">
+					
+							<a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=416573" title="Quote this post with Multi-Quote"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> MultiQuote</a>
+						</li>
+					<li><a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=416573" title="Reply directly to this post"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> Quote + Reply</a></li>
+					
+					
+					<!-- Matt: Approve / unapprove post button -->
+					
+				</ul>
+				<script type="text/javascript">
+					// Show multiquote for JS browsers
+					$('multiq_416573').show();
+					
+					if( $('toggle_post_416573') )
+					{
+						$('toggle_post_416573').show();
+					}
+				</script>
+				
+			</div>
+		<!-- </if> -->			
+		</div>
+		
+		<hr>
+		
+	
+
+
+	
+		 
+    
+		<!--Begin Msg Number 429887 - 3-->
+		<div class="post_block hentry clear  with_rep" id="post_id_429887">
+			<a id="entry429887"></a>
+			
+			
+			
+			
+			<div class="post_wrap">
+				
+					<h3>
+				
+						<span class="post_id">
+							<a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/page__view__findpost__p__429887" rel="bookmark" title="Link to post #3">#3</a>
+						</span>
+				<span class="author vcard">
+								<a class="url fn" href="http://www.dreamincode.net/forums/user/20570-gangsta/">gangsta</a>
+								&nbsp;<a href="http://www.dreamincode.net/forums/user/20570-gangsta/page__f__48" class="__user __id20570 __fid48" title="View Profile"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/user_popup.png" alt="Icon"></a>
+					
+								<img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/user_off.png" alt="User is offline" title="User is offline">
+					
+							</span>
+
+				
+					</h3>
+				<div class="author_info">
+					<!--userInfoPane-->
+<ul class="user_details">
+		
+			<li class="avatar"><a href="http://www.dreamincode.net/forums/user/20570-gangsta/" title="View Profile"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/about_unknown.gif" width="64" height="64" alt=""></a></li>
+		
+		
+			<li class="title">New D.I.C Head</li>
+		
+		
+	</ul>
+	<br>
+		
+		
+		
+			<div class="reputation zero">
+		
+		<span class="number">Reputation: 0</span>
+			</div>
+	<div style="margin: 0 auto;">
+		<ul class="user_controls clear">
+			
+			
+			
+				<li><a href="http://www.dreamincode.net/forums/index.php?app=blog&module=display&section=blog&mid=20570" title="View blog"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/book_open.png" alt="View blog"></a></li>
+			
+			
+		</ul>
+	</div>
+	<ul class="user_fields">
+                
+		
+			<li>
+				<span class="ft">Posts:</span>
+				<span class="fc">1</span>
+			</li>
+			<li>
+				<span class="ft">Joined:</span>
+				<span class="fc">04-January 07</span>
+			</li>
+		
+	</ul>   
+			
+	
+<!--userInfoPane-->
+				</div>
+				<div class="post_body">
+
+
+  				<!--<h2>Re: Converting and Evaluating Infix, Postfix and Prefix Expressions in C</h2>-->
+
+
+					<p class="posted_info">
+						
+						
+						Posted <abbr class="published" title="2008-10-05T14:44:23+00:00">05 October 2008 - 07:44 AM</abbr>
+					</p>
+					
+					<div class="post entry-content" id="">
+						<!--cached-Mon, 11 Nov 2013 03:11:02 +0000-->its a good code.and its very good to put spaces between operands and operators.But I think you ignored that you put spaces.because while evaluating postfix exp<b></b>ression, it gives wrong results for such an exp<b></b>ression = "10+5",it cannot read number 10 as "ten" it assumes that its 1 "one".How can you correct that?
+						
+						<br>
+						
+					</div>
+					
+
+
+				</div>
+			<div class="rep_bar clear right" id="rep_post_429887"><span style="float: left; margin-top: 10px; font-weight: bold;">
+
+Was This Post Helpful? 
+
+</span>
+					
+												
+				
+					<span class="reputation zero rep_show clickable" title="Reputation" onclick="ipb.topic.repPopUp( this, 429887 );">
+				
+				
+				
+						0
+					</span>
+<!-- REMOVED From Below: AND Array['member_id'] != 0 -->
+					<ul>
+						
+							<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#" class="rep_up" title="Vote this post up"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/add.png" alt="+"></a></li>
+						
+						
+							<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#" class="rep_down" title="Vote this post down"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/delete.png" alt="-"></a></li>
+						
+						</ul>
+				</div>
+				<script type="text/javascript">
+					ipb.global.registerReputation( 'rep_post_429887', { app: 'forums', type: 'pid', typeid: '429887' }, parseInt('0') );
+				</script>
+				<ul class="post_controls">
+					
+					<li class="top hide"><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#top" class="top" title="Back to top">Back to top</a></li>
+					
+					
+						<li class="multiquote" id="multiq_429887" style="">
+					
+							<a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=429887" title="Quote this post with Multi-Quote"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> MultiQuote</a>
+						</li>
+					<li><a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=429887" title="Reply directly to this post"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> Quote + Reply</a></li>
+					
+					
+					<!-- Matt: Approve / unapprove post button -->
+					
+				</ul>
+				<script type="text/javascript">
+					// Show multiquote for JS browsers
+					$('multiq_429887').show();
+					
+					if( $('toggle_post_429887') )
+					{
+						$('toggle_post_429887').show();
+					}
+				</script>
+				
+			</div>
+		<!-- </if> -->			
+		</div>
+		
+		<hr>
+		
+	
+
+
+	
+		 
+    
+		<!--Begin Msg Number 481853 - 4-->
+		<div class="post_block hentry clear  with_rep" id="post_id_481853">
+			<a id="entry481853"></a>
+			
+			
+			
+			
+			<div class="post_wrap">
+				
+					<h3>
+				
+						<span class="post_id">
+							<a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/page__view__findpost__p__481853" rel="bookmark" title="Link to post #4">#4</a>
+						</span>
+				<span class="author vcard">
+								<a class="url fn" href="http://www.dreamincode.net/forums/user/3388-born2c0de/">born2c0de</a>
+								&nbsp;<a href="http://www.dreamincode.net/forums/user/3388-born2c0de/page__f__48" class="__user __id3388 __fid48" title="View Profile"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/user_popup.png" alt="Icon"></a>
+					
+								<img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/user_off.png" alt="User is offline" title="User is offline">
+					
+							</span>
+
+				
+					</h3>
+				<div class="author_info">
+					<!--userInfoPane-->
+<ul class="user_details">
+		
+			<li class="avatar"><a href="http://www.dreamincode.net/forums/user/3388-born2c0de/" title="View Profile"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/55d8bbada932e15aac2faa5b14c41b26" alt=""></a></li>
+		
+		
+			<li class="title">printf("I'm a %XR",195936478);</li>
+		
+		<li class="group_icon">
+			
+				<img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/alumni_group.gif" alt="member icon">
+			
+			</li>
+	</ul>
+	<br>
+		
+			<div class="reputation positive">
+		
+		
+		
+		<span class="number">Reputation: 176</span>
+			</div>
+	<div style="margin: 0 auto;">
+		<ul class="user_controls clear">
+			
+			
+			
+				<li><a href="http://www.dreamincode.net/forums/index.php?app=blog&module=display&section=blog&mid=3388" title="View blog"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/book_open.png" alt="View blog"></a></li>
+			
+			
+		</ul>
+	</div>
+	<ul class="user_fields">
+                
+		
+			<li>
+				<span class="ft">Posts:</span>
+				<span class="fc">4,667</span>
+			</li>
+			<li>
+				<span class="ft">Joined:</span>
+				<span class="fc">26-November 04</span>
+			</li>
+		
+	</ul>   
+			
+	
+<!--userInfoPane-->
+				</div>
+				<div class="post_body">
+
+
+  				<!--<h2>Re: Converting and Evaluating Infix, Postfix and Prefix Expressions in C</h2>-->
+
+
+					<p class="posted_info">
+						
+						
+						Posted <abbr class="published" title="2008-12-05T07:37:49+00:00">05 December 2008 - 12:37 AM</abbr>
+					</p>
+					
+					<div class="post entry-content" id="">
+						<!--cached-Mon, 11 Nov 2013 03:11:02 +0000-->I have assumed every number to be a single digit in this tutorial.<br>
+If you wish to take into account of multiple digit numbers, keep traversing through the exp<b></b>ression and append each traversed character to a string until an operator or a null character is found.<br>
+The string would then contain the number. After that, you can use atoi() and use the integer for evaluation.
+						
+						<br>
+						
+					</div>
+					
+
+
+				</div>
+			<div class="rep_bar clear right" id="rep_post_481853"><span style="float: left; margin-top: 10px; font-weight: bold;">
+
+Was This Post Helpful? 
+
+</span>
+					
+												
+				
+					<span class="reputation zero rep_show clickable" title="Reputation" onclick="ipb.topic.repPopUp( this, 481853 );">
+				
+				
+				
+						0
+					</span>
+<!-- REMOVED From Below: AND Array['member_id'] != 0 -->
+					<ul>
+						
+							<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#" class="rep_up" title="Vote this post up"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/add.png" alt="+"></a></li>
+						
+						
+							<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#" class="rep_down" title="Vote this post down"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/delete.png" alt="-"></a></li>
+						
+						</ul>
+				</div>
+				<script type="text/javascript">
+					ipb.global.registerReputation( 'rep_post_481853', { app: 'forums', type: 'pid', typeid: '481853' }, parseInt('0') );
+				</script>
+				<ul class="post_controls">
+					
+					<li class="top hide"><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#top" class="top" title="Back to top">Back to top</a></li>
+					
+					
+						<li class="multiquote" id="multiq_481853" style="">
+					
+							<a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=481853" title="Quote this post with Multi-Quote"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> MultiQuote</a>
+						</li>
+					<li><a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=481853" title="Reply directly to this post"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> Quote + Reply</a></li>
+					
+					
+					<!-- Matt: Approve / unapprove post button -->
+					
+				</ul>
+				<script type="text/javascript">
+					// Show multiquote for JS browsers
+					$('multiq_481853').show();
+					
+					if( $('toggle_post_481853') )
+					{
+						$('toggle_post_481853').show();
+					}
+				</script>
+				
+			</div>
+		<!-- </if> -->			
+		</div>
+		
+		<hr>
+		
+	
+
+
+	
+		 
+    
+		<!--Begin Msg Number 490957 - 5-->
+		<div class="post_block hentry clear  with_rep" id="post_id_490957">
+			<a id="entry490957"></a>
+			
+			
+			
+			
+			<div class="post_wrap">
+				
+					<h3>
+				
+						<span class="post_id">
+							<a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/page__view__findpost__p__490957" rel="bookmark" title="Link to post #5">#5</a>
+						</span>
+				<span class="author vcard">
+								<a class="url fn" href="http://www.dreamincode.net/forums/user/141577-guitarded/">Guitarded</a>
+								&nbsp;<a href="http://www.dreamincode.net/forums/user/141577-guitarded/page__f__48" class="__user __id141577 __fid48" title="View Profile"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/user_popup.png" alt="Icon"></a>
+					
+								<img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/user_off.png" alt="User is offline" title="User is offline">
+					
+							</span>
+
+				
+					</h3>
+				<div class="author_info">
+					<!--userInfoPane-->
+<ul class="user_details">
+		
+			<li class="avatar"><a href="http://www.dreamincode.net/forums/user/141577-guitarded/" title="View Profile"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/about_unknown.gif" width="64" height="64" alt=""></a></li>
+		
+		
+			<li class="title">New D.I.C Head</li>
+		
+		
+	</ul>
+	<br>
+		
+		
+		
+			<div class="reputation zero">
+		
+		<span class="number">Reputation: 0</span>
+			</div>
+	<div style="margin: 0 auto;">
+		<ul class="user_controls clear">
+			
+			
+			
+				<li><a href="http://www.dreamincode.net/forums/index.php?app=blog&module=display&section=blog&mid=141577" title="View blog"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/book_open.png" alt="View blog"></a></li>
+			
+			
+		</ul>
+	</div>
+	<ul class="user_fields">
+                
+		
+			<li>
+				<span class="ft">Posts:</span>
+				<span class="fc">5</span>
+			</li>
+			<li>
+				<span class="ft">Joined:</span>
+				<span class="fc">15-December 08</span>
+			</li>
+		
+	</ul>   
+			
+	
+<!--userInfoPane-->
+				</div>
+				<div class="post_body">
+
+
+  				<!--<h2>Re: Converting and Evaluating Infix, Postfix and Prefix Expressions in C</h2>-->
+
+
+					<p class="posted_info">
+						
+						
+						Posted <abbr class="published" title="2008-12-15T19:52:34+00:00">15 December 2008 - 12:52 PM</abbr>
+					</p>
+					
+					<div class="post entry-content" id="">
+						<!--cached-Mon, 11 Nov 2013 03:11:02 +0000-->Great tutorial, thanks!<br>
+<br>
+I've modified it a bit to read multiple digit numbers and doubles for my project. There's only one thing I can't figure out, how do you make it read negative numbers and floating point numbers?
+						
+						<br>
+						
+					</div>
+					
+
+
+				</div>
+			<div class="rep_bar clear right" id="rep_post_490957"><span style="float: left; margin-top: 10px; font-weight: bold;">
+
+Was This Post Helpful? 
+
+</span>
+					
+												
+				
+					<span class="reputation zero rep_show clickable" title="Reputation" onclick="ipb.topic.repPopUp( this, 490957 );">
+				
+				
+				
+						0
+					</span>
+<!-- REMOVED From Below: AND Array['member_id'] != 0 -->
+					<ul>
+						
+							<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#" class="rep_up" title="Vote this post up"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/add.png" alt="+"></a></li>
+						
+						
+							<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#" class="rep_down" title="Vote this post down"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/delete.png" alt="-"></a></li>
+						
+						</ul>
+				</div>
+				<script type="text/javascript">
+					ipb.global.registerReputation( 'rep_post_490957', { app: 'forums', type: 'pid', typeid: '490957' }, parseInt('0') );
+				</script>
+				<ul class="post_controls">
+					
+					<li class="top hide"><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#top" class="top" title="Back to top">Back to top</a></li>
+					
+					
+						<li class="multiquote" id="multiq_490957" style="">
+					
+							<a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=490957" title="Quote this post with Multi-Quote"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> MultiQuote</a>
+						</li>
+					<li><a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=490957" title="Reply directly to this post"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> Quote + Reply</a></li>
+					
+					
+					<!-- Matt: Approve / unapprove post button -->
+					
+				</ul>
+				<script type="text/javascript">
+					// Show multiquote for JS browsers
+					$('multiq_490957').show();
+					
+					if( $('toggle_post_490957') )
+					{
+						$('toggle_post_490957').show();
+					}
+				</script>
+				
+			</div>
+		<!-- </if> -->			
+		</div>
+		
+		<hr>
+		
+	
+
+
+	
+		 
+    
+		<!--Begin Msg Number 722604 - 6-->
+		<div class="post_block hentry clear  with_rep" id="post_id_722604">
+			<a id="entry722604"></a>
+			
+			
+			
+			
+			<div class="post_wrap">
+				
+					<h3>
+				
+						<span class="post_id">
+							<a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/page__view__findpost__p__722604" rel="bookmark" title="Link to post #6">#6</a>
+						</span>
+				<span class="author vcard">
+								<a class="url fn" href="http://www.dreamincode.net/forums/user/49710-vellalyn/">vellalyn</a>
+								&nbsp;<a href="http://www.dreamincode.net/forums/user/49710-vellalyn/page__f__48" class="__user __id49710 __fid48" title="View Profile"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/user_popup.png" alt="Icon"></a>
+					
+								<img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/user_off.png" alt="User is offline" title="User is offline">
+					
+							</span>
+
+				
+					</h3>
+				<div class="author_info">
+					<!--userInfoPane-->
+<ul class="user_details">
+		
+			<li class="avatar"><a href="http://www.dreamincode.net/forums/user/49710-vellalyn/" title="View Profile"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/about_unknown.gif" width="64" height="64" alt=""></a></li>
+		
+		
+			<li class="title">New D.I.C Head</li>
+		
+		
+	</ul>
+	<br>
+		
+		
+		
+			<div class="reputation zero">
+		
+		<span class="number">Reputation: 0</span>
+			</div>
+	<div style="margin: 0 auto;">
+		<ul class="user_controls clear">
+			
+			
+			
+				<li><a href="http://www.dreamincode.net/forums/index.php?app=blog&module=display&section=blog&mid=49710" title="View blog"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/book_open.png" alt="View blog"></a></li>
+			
+			
+		</ul>
+	</div>
+	<ul class="user_fields">
+                
+		
+			<li>
+				<span class="ft">Posts:</span>
+				<span class="fc">1</span>
+			</li>
+			<li>
+				<span class="ft">Joined:</span>
+				<span class="fc">02-October 07</span>
+			</li>
+		
+	</ul>   
+			
+	
+<!--userInfoPane-->
+				</div>
+				<div class="post_body">
+
+
+  				<!--<h2>Re: Converting and Evaluating Infix, Postfix and Prefix Expressions in C</h2>-->
+
+
+					<p class="posted_info">
+						
+						
+						Posted <abbr class="published" title="2009-08-02T16:26:34+00:00">02 August 2009 - 09:26 AM</abbr>
+					</p>
+					
+					<div class="post entry-content" id="">
+						<!--cached-Mon, 11 Nov 2013 03:11:02 +0000-->[quote name='born2c0de' date='14 Nov, 2007 - 01:43 AM' post='278982']<br>
+<br>
+<pre class="cpp; brush: cpp">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;ctype.h&gt;
+
+#define MAX 10
+#define EMPTY -1
+
+struct stack
+{
+	char data[MAX];
+	int top;
+};
+
+int isempty(struct stack *s)
+{
+	return (s-&gt;top == EMPTY) ? 1 : 0;
+}
+
+void emptystack(struct stack* s)
+{
+	s-&gt;top=EMPTY;
+}
+
+void push(struct stack* s,int item)
+{
+	if(s-&gt;top == (MAX-1))
+	{
+		printf("\nSTACK FULL");
+	}
+	else
+	{
+		++s-&gt;top;
+		s-&gt;data[s-&gt;top]=item;
+	}
+}
+
+char pop(struct stack* s)
+{
+	char ret=(char)EMPTY;
+	if(!isempty(s))
+	{
+		ret= s-&gt;data[s-&gt;top];
+		--s-&gt;top;
+	}
+	return ret;
+}
+
+void display(struct stack s)
+{
+	while(s.top != EMPTY)
+	{
+		printf("\n%d",s.data[s.top]);
+		s.top--;
+	}
+}
+
+int isoperator(char e)
+{
+	if(e == '+' || e == '-' || e == '*' || e == '/' || e == '%')
+		return 1;
+	else
+		return 0;
+}
+
+
+int priority(char e)
+{
+	int pri = 0;
+
+	if(e == '*' || e == '/' || e =='%')
+		pri = 2;
+	else
+	{
+		if(e == '+' || e == '-')
+			pri = 1;
+	}
+	return pri;
+}
+
+void infix2postfix(char* infix, char * postfix, int insertspace)
+{
+	char *i,*p;
+	struct stack X;
+	char n1;
+	emptystack(&amp;X);
+	i = &amp;infix[0];
+	p = &amp;postfix[0];
+
+	while(*i)
+	{
+		while(*i == ' ' || *i == '\t')
+		{
+			i++;
+		}
+
+		if( isdigit(*i) || isalpha(*i) )
+		{
+			while( isdigit(*i) || isalpha(*i))
+			{
+				*p = *i;
+				p++;
+				i++;
+			}
+			/*SPACE CODE*/
+			if(insertspace)
+			{
+				*p = ' ';
+				p++;
+			}
+			/*END SPACE CODE*/
+		}
+
+		if( *i == '(' )
+		{
+			push(&amp;X,*i);
+			i++;
+		}
+
+		if( *i == ')')
+		{
+			n1 = pop(&amp;X);
+			while( n1 != '(' )
+			{
+				*p = n1;
+				p++;
+				/*SPACE CODE*/
+				if(insertspace)
+				{
+					*p = ' ';
+					p++;
+				}
+				/*END SPACE CODE*/
+				n1 = pop(&amp;X);
+			}
+			i++;
+		}
+
+		if( isoperator(*i) )
+		{
+			if(isempty(&amp;X))
+				push(&amp;X,*i);
+			else
+			{
+				n1 = pop(&amp;X);
+				while(priority(n1) &gt;= priority(*i))
+				{
+					*p = n1;
+					p++;
+					/*SPACE CODE*/
+					if(insertspace)
+					{
+						*p = ' ';
+						p++;
+					}
+					/*END SPACE CODE*/
+					n1 = pop(&amp;X);
+				}
+				push(&amp;X,n1);
+				push(&amp;X,*i);
+			}
+			i++;
+		}
+	}
+	while(!isempty(&amp;X))
+	{
+		n1 = pop(&amp;X);
+		*p = n1;
+		p++;
+		/*SPACE CODE*/
+		if(insertspace)
+		{
+			*p = ' ';
+			p++;
+		}
+		/*END SPACE CODE*/
+	}
+	*p = '\0';
+}
+
+int main()
+{
+	char in[50],post[50];
+
+	strcpy(&amp;post[0],"");
+	printf("Enter Infix Exp<b></b>ression : ");
+	fflush(stdin);
+	gets(in);
+	infix2postfix(&amp;in[0],&amp;post[0],1);
+	printf("Postfix Exp<b></b>ression is : %s\n",&amp;post[0]);
+
+	return 0;
+}
+/* SAMPLE OUTPUT:
+Enter Infix Exp<b></b>ression : A + B + C / (E - F)
+Postfix Exp<b></b>ression is : A B + C E F - / + &nbsp;
+*/
+
+</pre><br>
+<br>
+<br>
+how to print or display the result of this..?? <br>
+example if you in put 4 + (5 * 6)<br>
+<br>
+the postfix would be 4 5 6 * +<br>
+<br>
+but how will you display the answer which is 34..??
+						
+						<br>
+						
+					</div>
+					
+
+
+				</div>
+			<div class="rep_bar clear right" id="rep_post_722604"><span style="float: left; margin-top: 10px; font-weight: bold;">
+
+Was This Post Helpful? 
+
+</span>
+					
+												
+				
+					<span class="reputation zero rep_show clickable" title="Reputation" onclick="ipb.topic.repPopUp( this, 722604 );">
+				
+				
+				
+						0
+					</span>
+<!-- REMOVED From Below: AND Array['member_id'] != 0 -->
+					<ul>
+						
+							<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#" class="rep_up" title="Vote this post up"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/add.png" alt="+"></a></li>
+						
+						
+							<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#" class="rep_down" title="Vote this post down"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/delete.png" alt="-"></a></li>
+						
+						</ul>
+				</div>
+				<script type="text/javascript">
+					ipb.global.registerReputation( 'rep_post_722604', { app: 'forums', type: 'pid', typeid: '722604' }, parseInt('0') );
+				</script>
+				<ul class="post_controls">
+					
+					<li class="top hide"><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#top" class="top" title="Back to top">Back to top</a></li>
+					
+					
+						<li class="multiquote" id="multiq_722604" style="">
+					
+							<a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=722604" title="Quote this post with Multi-Quote"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> MultiQuote</a>
+						</li>
+					<li><a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=722604" title="Reply directly to this post"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> Quote + Reply</a></li>
+					
+					
+					<!-- Matt: Approve / unapprove post button -->
+					
+				</ul>
+				<script type="text/javascript">
+					// Show multiquote for JS browsers
+					$('multiq_722604').show();
+					
+					if( $('toggle_post_722604') )
+					{
+						$('toggle_post_722604').show();
+					}
+				</script>
+				
+			</div>
+		<!-- </if> -->			
+		</div>
+		
+		<hr>
+		
+	
+
+
+	
+		 
+    
+		<!--Begin Msg Number 743537 - 7-->
+		<div class="post_block hentry clear  with_rep" id="post_id_743537">
+			<a id="entry743537"></a>
+			
+			
+			
+			
+			<div class="post_wrap">
+				
+					<h3>
+				
+						<span class="post_id">
+							<a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/page__view__findpost__p__743537" rel="bookmark" title="Link to post #7">#7</a>
+						</span>
+				<span class="author vcard">
+								<a class="url fn" href="http://www.dreamincode.net/forums/user/266104-jslarochelle/">jslarochelle</a>
+								&nbsp;<a href="http://www.dreamincode.net/forums/user/266104-jslarochelle/page__f__48" class="__user __id266104 __fid48" title="View Profile"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/user_popup.png" alt="Icon"></a>
+					
+								<img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/user_off.png" alt="User is offline" title="User is offline">
+					
+							</span>
+
+				
+					</h3>
+				<div class="author_info">
+					<!--userInfoPane-->
+<ul class="user_details">
+		
+			<li class="avatar"><a href="http://www.dreamincode.net/forums/user/266104-jslarochelle/" title="View Profile"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/about_unknown.gif" width="64" height="64" alt=""></a></li>
+		
+		
+			<li class="title">New D.I.C Head</li>
+		
+		
+	</ul>
+	<br>
+		
+		
+		
+			<div class="reputation zero">
+		
+		<span class="number">Reputation: 0</span>
+			</div>
+	<div style="margin: 0 auto;">
+		<ul class="user_controls clear">
+			
+			
+			
+				<li><a href="http://www.dreamincode.net/forums/index.php?app=blog&module=display&section=blog&mid=266104" title="View blog"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/book_open.png" alt="View blog"></a></li>
+			
+			
+		</ul>
+	</div>
+	<ul class="user_fields">
+                
+		
+			<li>
+				<span class="ft">Posts:</span>
+				<span class="fc">1</span>
+			</li>
+			<li>
+				<span class="ft">Joined:</span>
+				<span class="fc">22-August 09</span>
+			</li>
+		
+	</ul>   
+			
+	
+<!--userInfoPane-->
+				</div>
+				<div class="post_body">
+
+
+  				<!--<h2>Re: Converting and Evaluating Infix, Postfix and Prefix Expressions in C</h2>-->
+
+
+					<p class="posted_info">
+						
+						
+						Posted <abbr class="published" title="2009-08-22T16:38:38+00:00">22 August 2009 - 09:38 AM</abbr>
+					</p>
+					
+					<div class="post entry-content" id="">
+						<!--cached-Mon, 11 Nov 2013 03:11:02 +0000-->Nice article. A little biased toward the tree implementation though. In fact, you don't have to keep working with strings when using the Stack version of the evaluator. You can convert the elements of the exp<b></b>ression into say Exp<b></b>ressionElement as you do the infix to postfix conversion. After that the evaluator itself can work directly with array or list of Exp<b></b>ressionElement. This way the Stack avoids some of the inconvenient you mentioned.  I have found that in practice choosing between the two implementations is mostly a matter of taste and I have used both. <br>
+In my code for this kind of software I use lookup tables to tokenize the initial string into WORD (variables), NUMBER (literals), OPERATOR and sometimes FUNCTION. Lookup tables make the code much simpler and fast.<br>
+ <img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/biggrin.gif" class="bbc_emoticon" alt=":D"> <br>
+JS
+						
+						<br>
+						
+					</div>
+					
+
+
+				</div>
+			<div class="rep_bar clear right" id="rep_post_743537"><span style="float: left; margin-top: 10px; font-weight: bold;">
+
+Was This Post Helpful? 
+
+</span>
+					
+												
+				
+					<span class="reputation zero rep_show clickable" title="Reputation" onclick="ipb.topic.repPopUp( this, 743537 );">
+				
+				
+				
+						0
+					</span>
+<!-- REMOVED From Below: AND Array['member_id'] != 0 -->
+					<ul>
+						
+							<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#" class="rep_up" title="Vote this post up"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/add.png" alt="+"></a></li>
+						
+						
+							<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#" class="rep_down" title="Vote this post down"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/delete.png" alt="-"></a></li>
+						
+						</ul>
+				</div>
+				<script type="text/javascript">
+					ipb.global.registerReputation( 'rep_post_743537', { app: 'forums', type: 'pid', typeid: '743537' }, parseInt('0') );
+				</script>
+				<ul class="post_controls">
+					
+					<li class="top hide"><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#top" class="top" title="Back to top">Back to top</a></li>
+					
+					
+						<li class="multiquote" id="multiq_743537" style="">
+					
+							<a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=743537" title="Quote this post with Multi-Quote"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> MultiQuote</a>
+						</li>
+					<li><a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=743537" title="Reply directly to this post"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> Quote + Reply</a></li>
+					
+					
+					<!-- Matt: Approve / unapprove post button -->
+					
+				</ul>
+				<script type="text/javascript">
+					// Show multiquote for JS browsers
+					$('multiq_743537').show();
+					
+					if( $('toggle_post_743537') )
+					{
+						$('toggle_post_743537').show();
+					}
+				</script>
+				
+			</div>
+		<!-- </if> -->			
+		</div>
+		
+		<hr>
+		
+	
+
+
+	
+		 
+    
+		<!--Begin Msg Number 773322 - 8-->
+		<div class="post_block hentry clear  with_rep" id="post_id_773322">
+			<a id="entry773322"></a>
+			
+			
+			
+			
+			<div class="post_wrap">
+				
+					<h3>
+				
+						<span class="post_id">
+							<a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/page__view__findpost__p__773322" rel="bookmark" title="Link to post #8">#8</a>
+						</span>
+				<span class="author vcard">
+								<a class="url fn" href="http://www.dreamincode.net/forums/user/278678-tatsukitchy/">tatsukitchy</a>
+								&nbsp;<a href="http://www.dreamincode.net/forums/user/278678-tatsukitchy/page__f__48" class="__user __id278678 __fid48" title="View Profile"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/user_popup.png" alt="Icon"></a>
+					
+								<img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/user_off.png" alt="User is offline" title="User is offline">
+					
+							</span>
+
+				
+					</h3>
+				<div class="author_info">
+					<!--userInfoPane-->
+<ul class="user_details">
+		
+			<li class="avatar"><a href="http://www.dreamincode.net/forums/user/278678-tatsukitchy/" title="View Profile"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/about_unknown.gif" width="64" height="64" alt=""></a></li>
+		
+		
+			<li class="title">New D.I.C Head</li>
+		
+		
+	</ul>
+	<br>
+		
+		
+		
+			<div class="reputation zero">
+		
+		<span class="number">Reputation: 0</span>
+			</div>
+	<div style="margin: 0 auto;">
+		<ul class="user_controls clear">
+			
+			
+			
+				<li><a href="http://www.dreamincode.net/forums/index.php?app=blog&module=display&section=blog&mid=278678" title="View blog"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/book_open.png" alt="View blog"></a></li>
+			
+			
+		</ul>
+	</div>
+	<ul class="user_fields">
+                
+		
+			<li>
+				<span class="ft">Posts:</span>
+				<span class="fc">1</span>
+			</li>
+			<li>
+				<span class="ft">Joined:</span>
+				<span class="fc">20-September 09</span>
+			</li>
+		
+	</ul>   
+			
+	
+<!--userInfoPane-->
+				</div>
+				<div class="post_body">
+
+
+  				<!--<h2>Re: Converting and Evaluating Infix, Postfix and Prefix Expressions in C</h2>-->
+
+
+					<p class="posted_info">
+						
+						
+						Posted <abbr class="published" title="2009-09-20T15:30:28+00:00">20 September 2009 - 08:30 AM</abbr>
+					</p>
+					
+					<div class="post entry-content" id="">
+						<!--cached-Mon, 11 Nov 2013 03:11:02 +0000-->can you convert that codes in VB6.0??
+						
+						<br>
+						
+					</div>
+					
+
+
+				</div>
+			<div class="rep_bar clear right" id="rep_post_773322"><span style="float: left; margin-top: 10px; font-weight: bold;">
+
+Was This Post Helpful? 
+
+</span>
+					
+												
+				
+					<span class="reputation zero rep_show clickable" title="Reputation" onclick="ipb.topic.repPopUp( this, 773322 );">
+				
+				
+				
+						0
+					</span>
+<!-- REMOVED From Below: AND Array['member_id'] != 0 -->
+					<ul>
+						
+							<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#" class="rep_up" title="Vote this post up"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/add.png" alt="+"></a></li>
+						
+						
+							<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#" class="rep_down" title="Vote this post down"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/delete.png" alt="-"></a></li>
+						
+						</ul>
+				</div>
+				<script type="text/javascript">
+					ipb.global.registerReputation( 'rep_post_773322', { app: 'forums', type: 'pid', typeid: '773322' }, parseInt('0') );
+				</script>
+				<ul class="post_controls">
+					
+					<li class="top hide"><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#top" class="top" title="Back to top">Back to top</a></li>
+					
+					
+						<li class="multiquote" id="multiq_773322" style="">
+					
+							<a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=773322" title="Quote this post with Multi-Quote"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> MultiQuote</a>
+						</li>
+					<li><a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=773322" title="Reply directly to this post"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> Quote + Reply</a></li>
+					
+					
+					<!-- Matt: Approve / unapprove post button -->
+					
+				</ul>
+				<script type="text/javascript">
+					// Show multiquote for JS browsers
+					$('multiq_773322').show();
+					
+					if( $('toggle_post_773322') )
+					{
+						$('toggle_post_773322').show();
+					}
+				</script>
+				
+			</div>
+		<!-- </if> -->			
+		</div>
+		
+		<hr>
+		
+	
+
+
+	
+		 
+    
+		<!--Begin Msg Number 783941 - 9-->
+		<div class="post_block hentry clear  with_rep" id="post_id_783941">
+			<a id="entry783941"></a>
+			
+			
+			
+			
+			<div class="post_wrap">
+				
+					<h3>
+				
+						<span class="post_id">
+							<a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/page__view__findpost__p__783941" rel="bookmark" title="Link to post #9">#9</a>
+						</span>
+				<span class="author vcard">
+								<a class="url fn" href="http://www.dreamincode.net/forums/user/279440-j7x/">j7x</a>
+								&nbsp;<a href="http://www.dreamincode.net/forums/user/279440-j7x/page__f__48" class="__user __id279440 __fid48" title="View Profile"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/user_popup.png" alt="Icon"></a>
+					
+								<img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/user_off.png" alt="User is offline" title="User is offline">
+					
+							</span>
+
+				
+					</h3>
+				<div class="author_info">
+					<!--userInfoPane-->
+<ul class="user_details">
+		
+			<li class="avatar"><a href="http://www.dreamincode.net/forums/user/279440-j7x/" title="View Profile"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/av-279440.jpg" width="46" height="64" alt=""></a></li>
+		
+		
+			<li class="title">New D.I.C Head</li>
+		
+		
+	</ul>
+	<br>
+		
+		
+		
+			<div class="reputation zero">
+		
+		<span class="number">Reputation: 0</span>
+			</div>
+	<div style="margin: 0 auto;">
+		<ul class="user_controls clear">
+			
+			
+			
+				<li><a href="http://www.dreamincode.net/forums/index.php?app=blog&module=display&section=blog&mid=279440" title="View blog"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/book_open.png" alt="View blog"></a></li>
+			
+			
+		</ul>
+	</div>
+	<ul class="user_fields">
+                
+		
+			<li>
+				<span class="ft">Posts:</span>
+				<span class="fc">17</span>
+			</li>
+			<li>
+				<span class="ft">Joined:</span>
+				<span class="fc">22-September 09</span>
+			</li>
+		
+	</ul>   
+			
+	
+<!--userInfoPane-->
+				</div>
+				<div class="post_body">
+
+
+  				<!--<h2>Re: Converting and Evaluating Infix, Postfix and Prefix Expressions in C</h2>-->
+
+
+					<p class="posted_info">
+						
+						
+						Posted <abbr class="published" title="2009-09-30T01:04:17+00:00">29 September 2009 - 06:04 PM</abbr>
+					</p>
+					
+					<div class="post entry-content" id="">
+						<!--cached-Mon, 11 Nov 2013 03:11:02 +0000-->The code is nice b2c. We did this at the college - converting infix to postfix. I don't understand why we need to check for empty/overflow/underflow of the stack, please explain. Anyways, take a look at my code.<br>
+<br>
+<pre class="; brush: cpp">//Converting Infix to Postfix using exp<b></b>ressions.
+
+#include&lt;stdio.h&gt;
+#include&lt;conio.h&gt;
+
+char post_fix[20]; // This declaration can be local too.
+int input_precede(char sym)
+{
+	switch(sym)
+	{
+		case '+ : return 1;
+		case '-' : return 1;
+
+		case '*': return 3;
+		case '/' : return 3;
+		case '%': return 3;
+
+		case '^': return 6;
+		case '$': return 6;
+
+		case '(': return 9;
+		case ')': return 0;
+
+		default: return 8;
+	}
+}
+
+int stack_precede(char sym)
+{
+	switch(sym)
+	{
+		case '+': return 2;
+		case '-': return 2;
+
+		case '*': return 4;
+		case '/': return 4;
+		case '%': return 4;
+
+		case '^': return 5;
+		case '$': return 5;
+
+		case '(': return 0;
+		case '#': return -1;
+		default: return 8;
+	}
+}
+
+void in_to_post(char inf[20])
+{
+	char st[20],s;
+	int i,j=0,top=-1;
+
+	st[++top]='#';
+	
+	for(i=0;inf[i]!='\0';i++)
+	{
+		s=inf[i];
+		
+
+while(stack_precede(st[top])&gt;input_precede(s))
+			post_fix[j++]=st[top--];
+
+		
+
+if(stack_precede(st[top])!=input_precede(s))
+			st[++top]=s;
+		else
+			top--;
+	}
+
+	while(st[top]!='#')
+	{
+		post_fix[j++]=st[top--];
+	}
+
+	post_fix[j]='\0';
+	
+	printf("\nPostfix : %s\n",post_fix);
+}
+
+int main()
+{
+	char infix[25];
+	clrscr();
+
+	printf("\nEnter a valid infix exp<b></b>ression:\n");
+	gets(infix);
+
+	in_to_post(infix);
+	getch();
+        return 0;
+}
+
+</pre><br>
+<br>
+I've used different functions for assigning precedence, think it's simpler to understand that way.
+						
+						<br>
+						
+					</div>
+					
+
+
+				</div>
+			<div class="rep_bar clear right" id="rep_post_783941"><span style="float: left; margin-top: 10px; font-weight: bold;">
+
+Was This Post Helpful? 
+
+</span>
+					
+												
+				
+					<span class="reputation zero rep_show clickable" title="Reputation" onclick="ipb.topic.repPopUp( this, 783941 );">
+				
+				
+				
+						0
+					</span>
+<!-- REMOVED From Below: AND Array['member_id'] != 0 -->
+					<ul>
+						
+							<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#" class="rep_up" title="Vote this post up"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/add.png" alt="+"></a></li>
+						
+						
+							<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#" class="rep_down" title="Vote this post down"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/delete.png" alt="-"></a></li>
+						
+						</ul>
+				</div>
+				<script type="text/javascript">
+					ipb.global.registerReputation( 'rep_post_783941', { app: 'forums', type: 'pid', typeid: '783941' }, parseInt('0') );
+				</script>
+				<ul class="post_controls">
+					
+					<li class="top hide"><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#top" class="top" title="Back to top">Back to top</a></li>
+					
+					
+						<li class="multiquote" id="multiq_783941" style="">
+					
+							<a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=783941" title="Quote this post with Multi-Quote"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> MultiQuote</a>
+						</li>
+					<li><a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=783941" title="Reply directly to this post"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> Quote + Reply</a></li>
+					
+					
+					<!-- Matt: Approve / unapprove post button -->
+					
+				</ul>
+				<script type="text/javascript">
+					// Show multiquote for JS browsers
+					$('multiq_783941').show();
+					
+					if( $('toggle_post_783941') )
+					{
+						$('toggle_post_783941').show();
+					}
+				</script>
+				
+			</div>
+		<!-- </if> -->			
+		</div>
+		
+		<hr>
+		
+	
+
+
+	
+		 
+    
+		<!--Begin Msg Number 809142 - 10-->
+		<div class="post_block hentry clear  with_rep" id="post_id_809142">
+			<a id="entry809142"></a>
+			
+			
+			
+			
+			<div class="post_wrap">
+				
+					<h3>
+				
+						<span class="post_id">
+							<a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/page__view__findpost__p__809142" rel="bookmark" title="Link to post #10">#10</a>
+						</span>
+				<span class="author vcard">
+								<a class="url fn" href="http://www.dreamincode.net/forums/user/294184-%23www%23/">#www#</a>
+								&nbsp;<a href="http://www.dreamincode.net/forums/user/294184-%23www%23/page__f__48" class="__user __id294184 __fid48" title="View Profile"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/user_popup.png" alt="Icon"></a>
+					
+								<img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/user_off.png" alt="User is offline" title="User is offline">
+					
+							</span>
+
+				
+					</h3>
+				<div class="author_info">
+					<!--userInfoPane-->
+<ul class="user_details">
+		
+			<li class="avatar"><a href="http://www.dreamincode.net/forums/user/294184-%23www%23/" title="View Profile"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/about_unknown.gif" width="64" height="64" alt=""></a></li>
+		
+		
+			<li class="title">New D.I.C Head</li>
+		
+		
+	</ul>
+	<br>
+		
+		
+		
+			<div class="reputation zero">
+		
+		<span class="number">Reputation: 0</span>
+			</div>
+	<div style="margin: 0 auto;">
+		<ul class="user_controls clear">
+			
+			
+			
+				<li><a href="http://www.dreamincode.net/forums/index.php?app=blog&module=display&section=blog&mid=294184" title="View blog"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/book_open.png" alt="View blog"></a></li>
+			
+			
+		</ul>
+	</div>
+	<ul class="user_fields">
+                
+		
+			<li>
+				<span class="ft">Posts:</span>
+				<span class="fc">1</span>
+			</li>
+			<li>
+				<span class="ft">Joined:</span>
+				<span class="fc">23-October 09</span>
+			</li>
+		
+	</ul>   
+			
+	
+<!--userInfoPane-->
+				</div>
+				<div class="post_body">
+
+
+  				<!--<h2>Re: Converting and Evaluating Infix, Postfix and Prefix Expressions in C</h2>-->
+
+
+					<p class="posted_info">
+						
+						
+						Posted <abbr class="published" title="2009-10-24T06:13:45+00:00">23 October 2009 - 11:13 PM</abbr>
+					</p>
+					
+					<div class="post entry-content" id="">
+						<!--cached-Mon, 11 Nov 2013 03:11:02 +0000-->please can you help me modifiing it to read multiple digit numbers &gt;&gt;and numbers maybein dicimal or hex or binary<br>
+<br>
+please i want help&gt;&gt;&gt;i have tried much...but it didn't work.
+						
+						<br>
+						
+					</div>
+					
+
+
+				</div>
+			<div class="rep_bar clear right" id="rep_post_809142"><span style="float: left; margin-top: 10px; font-weight: bold;">
+
+Was This Post Helpful? 
+
+</span>
+					
+												
+				
+					<span class="reputation zero rep_show clickable" title="Reputation" onclick="ipb.topic.repPopUp( this, 809142 );">
+				
+				
+				
+						0
+					</span>
+<!-- REMOVED From Below: AND Array['member_id'] != 0 -->
+					<ul>
+						
+							<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#" class="rep_up" title="Vote this post up"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/add.png" alt="+"></a></li>
+						
+						
+							<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#" class="rep_down" title="Vote this post down"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/delete.png" alt="-"></a></li>
+						
+						</ul>
+				</div>
+				<script type="text/javascript">
+					ipb.global.registerReputation( 'rep_post_809142', { app: 'forums', type: 'pid', typeid: '809142' }, parseInt('0') );
+				</script>
+				<ul class="post_controls">
+					
+					<li class="top hide"><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#top" class="top" title="Back to top">Back to top</a></li>
+					
+					
+						<li class="multiquote" id="multiq_809142" style="">
+					
+							<a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=809142" title="Quote this post with Multi-Quote"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> MultiQuote</a>
+						</li>
+					<li><a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=809142" title="Reply directly to this post"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> Quote + Reply</a></li>
+					
+					
+					<!-- Matt: Approve / unapprove post button -->
+					
+				</ul>
+				<script type="text/javascript">
+					// Show multiquote for JS browsers
+					$('multiq_809142').show();
+					
+					if( $('toggle_post_809142') )
+					{
+						$('toggle_post_809142').show();
+					}
+				</script>
+				
+			</div>
+		<!-- </if> -->			
+		</div>
+		
+		<hr>
+		
+	
+
+
+	
+		 
+    
+		<!--Begin Msg Number 974284 - 11-->
+		<div class="post_block hentry clear  with_rep" id="post_id_974284">
+			<a id="entry974284"></a>
+			
+			
+			
+			
+			<div class="post_wrap">
+				
+					<h3 class="guest">
+				
+						<span class="post_id">
+							<a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/page__view__findpost__p__974284" rel="bookmark" title="Link to post #11">#11</a>
+						</span>
+				
+							Guest_yonten*
+				
+
+				
+					</h3>
+				<div class="author_info">
+					<!--userInfoPane-->
+<ul class="user_details">
+		
+			<li class="avatar"></li>
+		
+		
+		
+	</ul>
+	<br>
+		
+		
+		
+			<div class="reputation zero">
+		
+		<span class="number">Reputation: </span>
+			</div>
+	<div style="margin: 0 auto;">
+		<ul class="user_controls clear">
+			
+			
+			
+			
+		</ul>
+	</div>
+	<ul class="user_fields">
+                
+		
+	</ul>   
+			
+	
+<!--userInfoPane-->
+				</div>
+				<div class="post_body">
+
+
+  				<!--<h2>Re: Converting and Evaluating Infix, Postfix and Prefix Expressions in C</h2>-->
+
+
+					<p class="posted_info">
+						
+						
+						Posted <abbr class="published" title="2010-03-30T10:09:26+00:00">30 March 2010 - 03:09 AM</abbr>
+					</p>
+					
+					<div class="post entry-content" id="">
+						<!--cached-Mon, 11 Nov 2013 03:11:02 +0000-->sir,<br>
+it's good that you have given all the details about infix, postfix and prefix notation with good example and i learned a lot from there but what i have to know is that which exp<b></b>ression evaluates to the largest number. for eg.<br>
+ a)the prefix exp<b></b>ression +*-2357<br>
+ b)the infix exp<b></b>ression 2+3*5-7<br>
+ c)the infix exp<b></b>ression (2+5)*(5-7)<br>
+ d)the postfix expresion 23+57-*<br>
+<br>
+i think prefix exp<b></b>ression is the largest number but i am doubt whether it is a right answer.Therefore, may i have a correct answer.
+						
+						<br>
+						
+					</div>
+					
+
+
+				</div>
+			<div class="rep_bar clear right" id="rep_post_974284"><span style="float: left; margin-top: 10px; font-weight: bold;">
+
+Was This Post Helpful? 
+
+</span>
+					
+												
+				
+					<span class="reputation zero rep_show clickable" title="Reputation" onclick="ipb.topic.repPopUp( this, 974284 );">
+				
+				
+				
+						0
+					</span>
+<!-- REMOVED From Below: AND Array['member_id'] != 0 -->
+					
+				</div>
+				<script type="text/javascript">
+					ipb.global.registerReputation( 'rep_post_974284', { app: 'forums', type: 'pid', typeid: '974284' }, parseInt('0') );
+				</script>
+				<ul class="post_controls">
+					
+					<li class="top hide"><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#top" class="top" title="Back to top">Back to top</a></li>
+					
+					
+						<li class="multiquote" id="multiq_974284" style="">
+					
+							<a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=974284" title="Quote this post with Multi-Quote"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> MultiQuote</a>
+						</li>
+					<li><a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=974284" title="Reply directly to this post"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> Quote + Reply</a></li>
+					
+					
+					<!-- Matt: Approve / unapprove post button -->
+					
+				</ul>
+				<script type="text/javascript">
+					// Show multiquote for JS browsers
+					$('multiq_974284').show();
+					
+					if( $('toggle_post_974284') )
+					{
+						$('toggle_post_974284').show();
+					}
+				</script>
+				
+			</div>
+		<!-- </if> -->			
+		</div>
+		
+		<hr>
+		
+	
+
+
+	
+		 
+    
+		<!--Begin Msg Number 1044715 - 12-->
+		<div class="post_block hentry clear  with_rep" id="post_id_1044715">
+			<a id="entry1044715"></a>
+			
+			
+			
+			
+			<div class="post_wrap">
+				
+					<h3 class="guest">
+				
+						<span class="post_id">
+							<a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/page__view__findpost__p__1044715" rel="bookmark" title="Link to post #12">#12</a>
+						</span>
+				
+							Guest_aLoneKei*
+				
+
+				
+					</h3>
+				<div class="author_info">
+					<!--userInfoPane-->
+<ul class="user_details">
+		
+			<li class="avatar"></li>
+		
+		
+		
+	</ul>
+	<br>
+		
+		
+		
+			<div class="reputation zero">
+		
+		<span class="number">Reputation: </span>
+			</div>
+	<div style="margin: 0 auto;">
+		<ul class="user_controls clear">
+			
+			
+			
+			
+		</ul>
+	</div>
+	<ul class="user_fields">
+                
+		
+	</ul>   
+			
+	
+<!--userInfoPane-->
+				</div>
+				<div class="post_body">
+
+
+  				<!--<h2>Re: Converting and Evaluating Infix, Postfix and Prefix Expressions in C</h2>-->
+
+
+					<p class="posted_info">
+						
+						
+						Posted <abbr class="published" title="2010-06-18T05:36:15+00:00">17 June 2010 - 10:36 PM</abbr>
+					</p>
+					
+					<div class="post entry-content" id="">
+						<!--cached-Mon, 11 Nov 2013 03:11:02 +0000-->Thank you!<br>
+The Code Worked Very Well!
+						
+						<br>
+						
+					</div>
+					
+
+
+				</div>
+			<div class="rep_bar clear right" id="rep_post_1044715"><span style="float: left; margin-top: 10px; font-weight: bold;">
+
+Was This Post Helpful? 
+
+</span>
+					
+												
+				
+					<span class="reputation zero rep_show clickable" title="Reputation" onclick="ipb.topic.repPopUp( this, 1044715 );">
+				
+				
+				
+						0
+					</span>
+<!-- REMOVED From Below: AND Array['member_id'] != 0 -->
+					
+				</div>
+				<script type="text/javascript">
+					ipb.global.registerReputation( 'rep_post_1044715', { app: 'forums', type: 'pid', typeid: '1044715' }, parseInt('0') );
+				</script>
+				<ul class="post_controls">
+					
+					<li class="top hide"><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#top" class="top" title="Back to top">Back to top</a></li>
+					
+					
+						<li class="multiquote" id="multiq_1044715" style="">
+					
+							<a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=1044715" title="Quote this post with Multi-Quote"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> MultiQuote</a>
+						</li>
+					<li><a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=1044715" title="Reply directly to this post"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> Quote + Reply</a></li>
+					
+					
+					<!-- Matt: Approve / unapprove post button -->
+					
+				</ul>
+				<script type="text/javascript">
+					// Show multiquote for JS browsers
+					$('multiq_1044715').show();
+					
+					if( $('toggle_post_1044715') )
+					{
+						$('toggle_post_1044715').show();
+					}
+				</script>
+				
+			</div>
+		<!-- </if> -->			
+		</div>
+		
+		<hr>
+		
+	
+
+
+	
+		 
+    
+		<!--Begin Msg Number 1166501 - 13-->
+		<div class="post_block hentry clear  with_rep" id="post_id_1166501">
+			<a id="entry1166501"></a>
+			
+			
+			
+			
+			<div class="post_wrap">
+				
+					<h3 class="guest">
+				
+						<span class="post_id">
+							<a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/page__view__findpost__p__1166501" rel="bookmark" title="Link to post #13">#13</a>
+						</span>
+				
+							Guest_george*
+				
+
+				
+					</h3>
+				<div class="author_info">
+					<!--userInfoPane-->
+<ul class="user_details">
+		
+			<li class="avatar"></li>
+		
+		
+		
+	</ul>
+	<br>
+		
+		
+		
+			<div class="reputation zero">
+		
+		<span class="number">Reputation: </span>
+			</div>
+	<div style="margin: 0 auto;">
+		<ul class="user_controls clear">
+			
+			
+			
+			
+		</ul>
+	</div>
+	<ul class="user_fields">
+                
+		
+	</ul>   
+			
+	
+<!--userInfoPane-->
+				</div>
+				<div class="post_body">
+
+
+  				<!--<h2>Re: Converting and Evaluating Infix, Postfix and Prefix Expressions in C</h2>-->
+
+
+					<p class="posted_info">
+						
+						
+						Posted <abbr class="published" title="2010-11-12T17:09:38+00:00">12 November 2010 - 10:09 AM</abbr>
+					</p>
+					
+					<div class="post entry-content" id="">
+						<!--cached-Mon, 11 Nov 2013 03:11:02 +0000-->So what if you want to generate the exp<b></b>ression tree not from the Postfix but from Prefix exp<b></b>ression?
+						
+						<br>
+						
+					</div>
+					
+
+
+				</div>
+			<div class="rep_bar clear right" id="rep_post_1166501"><span style="float: left; margin-top: 10px; font-weight: bold;">
+
+Was This Post Helpful? 
+
+</span>
+					
+												
+				
+					<span class="reputation zero rep_show clickable" title="Reputation" onclick="ipb.topic.repPopUp( this, 1166501 );">
+				
+				
+				
+						0
+					</span>
+<!-- REMOVED From Below: AND Array['member_id'] != 0 -->
+					
+				</div>
+				<script type="text/javascript">
+					ipb.global.registerReputation( 'rep_post_1166501', { app: 'forums', type: 'pid', typeid: '1166501' }, parseInt('0') );
+				</script>
+				<ul class="post_controls">
+					
+					<li class="top hide"><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#top" class="top" title="Back to top">Back to top</a></li>
+					
+					
+						<li class="multiquote" id="multiq_1166501" style="">
+					
+							<a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=1166501" title="Quote this post with Multi-Quote"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> MultiQuote</a>
+						</li>
+					<li><a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=1166501" title="Reply directly to this post"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> Quote + Reply</a></li>
+					
+					
+					<!-- Matt: Approve / unapprove post button -->
+					
+				</ul>
+				<script type="text/javascript">
+					// Show multiquote for JS browsers
+					$('multiq_1166501').show();
+					
+					if( $('toggle_post_1166501') )
+					{
+						$('toggle_post_1166501').show();
+					}
+				</script>
+				
+			</div>
+		<!-- </if> -->			
+		</div>
+		
+		<hr>
+		
+	
+
+
+	
+		 
+    
+		<!--Begin Msg Number 1230608 - 14-->
+		<div class="post_block hentry clear  with_rep" id="post_id_1230608">
+			<a id="entry1230608"></a>
+			
+			
+			
+			
+			<div class="post_wrap">
+				
+					<h3>
+				
+						<span class="post_id">
+							<a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/page__view__findpost__p__1230608" rel="bookmark" title="Link to post #14">#14</a>
+						</span>
+				<span class="author vcard">
+								<a class="url fn" href="http://www.dreamincode.net/forums/user/463001-thefuzzy0ne/">thefuzzy0ne</a>
+								&nbsp;<a href="http://www.dreamincode.net/forums/user/463001-thefuzzy0ne/page__f__48" class="__user __id463001 __fid48" title="View Profile"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/user_popup.png" alt="Icon"></a>
+					
+								<img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/user_off.png" alt="User is offline" title="User is offline">
+					
+							</span>
+
+				
+					</h3>
+				<div class="author_info">
+					<!--userInfoPane-->
+<ul class="user_details">
+		
+			<li class="avatar"><a href="http://www.dreamincode.net/forums/user/463001-thefuzzy0ne/" title="View Profile"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/about_unknown.gif" width="64" height="64" alt=""></a></li>
+		
+		
+			<li class="title">New D.I.C Head</li>
+		
+		
+	</ul>
+	<br>
+		
+		
+		
+			<div class="reputation zero">
+		
+		<span class="number">Reputation: 0</span>
+			</div>
+	<div style="margin: 0 auto;">
+		<ul class="user_controls clear">
+			
+			
+			
+				<li><a href="http://www.dreamincode.net/forums/index.php?app=blog&module=display&section=blog&mid=463001" title="View blog"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/book_open.png" alt="View blog"></a></li>
+			
+			
+		</ul>
+	</div>
+	<ul class="user_fields">
+                
+		
+			<li>
+				<span class="ft">Posts:</span>
+				<span class="fc">10</span>
+			</li>
+			<li>
+				<span class="ft">Joined:</span>
+				<span class="fc">20-January 11</span>
+			</li>
+		
+	</ul>   
+			
+	
+<!--userInfoPane-->
+				</div>
+				<div class="post_body">
+
+
+  				<!--<h2>Re: Converting and Evaluating Infix, Postfix and Prefix Expressions in C</h2>-->
+
+
+					<p class="posted_info">
+						
+						
+						Posted <abbr class="published" title="2011-01-25T17:55:44+00:00">25 January 2011 - 10:55 AM</abbr>
+					</p>
+					
+					<div class="post entry-content" id="">
+						<!--cached-Mon, 11 Nov 2013 03:11:02 +0000-->Just wanted to say thanks for the tutorial. It was just what I was after! <img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/biggrin.gif" class="bbc_emoticon" alt=":D">
+						
+						<br>
+						
+					</div>
+					
+
+
+				</div>
+			<div class="rep_bar clear right" id="rep_post_1230608"><span style="float: left; margin-top: 10px; font-weight: bold;">
+
+Was This Post Helpful? 
+
+</span>
+					
+												
+				
+					<span class="reputation zero rep_show clickable" title="Reputation" onclick="ipb.topic.repPopUp( this, 1230608 );">
+				
+				
+				
+						0
+					</span>
+<!-- REMOVED From Below: AND Array['member_id'] != 0 -->
+					<ul>
+						
+							<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#" class="rep_up" title="Vote this post up"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/add.png" alt="+"></a></li>
+						
+						
+							<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#" class="rep_down" title="Vote this post down"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/delete.png" alt="-"></a></li>
+						
+						</ul>
+				</div>
+				<script type="text/javascript">
+					ipb.global.registerReputation( 'rep_post_1230608', { app: 'forums', type: 'pid', typeid: '1230608' }, parseInt('0') );
+				</script>
+				<ul class="post_controls">
+					
+					<li class="top hide"><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#top" class="top" title="Back to top">Back to top</a></li>
+					
+					
+						<li class="multiquote" id="multiq_1230608" style="">
+					
+							<a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=1230608" title="Quote this post with Multi-Quote"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> MultiQuote</a>
+						</li>
+					<li><a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=1230608" title="Reply directly to this post"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> Quote + Reply</a></li>
+					
+					
+					<!-- Matt: Approve / unapprove post button -->
+					
+				</ul>
+				<script type="text/javascript">
+					// Show multiquote for JS browsers
+					$('multiq_1230608').show();
+					
+					if( $('toggle_post_1230608') )
+					{
+						$('toggle_post_1230608').show();
+					}
+				</script>
+				
+			</div>
+		<!-- </if> -->			
+		</div>
+		
+		<hr>
+		
+	
+
+
+	
+		 
+    
+		<!--Begin Msg Number 1239987 - 15-->
+		<div class="post_block hentry clear  with_rep" id="post_id_1239987">
+			<a id="entry1239987"></a>
+			
+			
+			
+			
+			<div class="post_wrap">
+				
+					<h3>
+				
+						<span class="post_id">
+							<a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/page__view__findpost__p__1239987" rel="bookmark" title="Link to post #15">#15</a>
+						</span>
+				<span class="author vcard">
+								<a class="url fn" href="http://www.dreamincode.net/forums/user/455053-vividexstance/">vividexstance</a>
+								&nbsp;<a href="http://www.dreamincode.net/forums/user/455053-vividexstance/page__f__48" class="__user __id455053 __fid48" title="View Profile"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/user_popup.png" alt="Icon"></a>
+					
+								<img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/user_off.png" alt="User is offline" title="User is offline">
+					
+							</span>
+
+				
+					</h3>
+				<div class="author_info">
+					<!--userInfoPane-->
+<ul class="user_details">
+		
+			<li class="avatar"><a href="http://www.dreamincode.net/forums/user/455053-vividexstance/" title="View Profile"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/4093ca0ff112eabd558a33966608c299" alt=""></a></li>
+		
+		
+			<li class="title">D.I.C Lover</li>
+		
+		<li class="group_icon">
+			
+				<img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/expert_group.gif" alt="member icon">
+			
+			</li>
+	</ul>
+	<br>
+		
+			<div class="reputation positive">
+		
+		
+		
+		<span class="number">Reputation: 597</span>
+			</div>
+	<div style="margin: 0 auto;">
+		<ul class="user_controls clear">
+			
+			
+			
+				<li><a href="http://www.dreamincode.net/forums/index.php?app=blog&module=display&section=blog&mid=455053" title="View blog"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/book_open.png" alt="View blog"></a></li>
+			
+			
+		</ul>
+	</div>
+	<ul class="user_fields">
+                
+		
+			<li>
+				<span class="ft">Posts:</span>
+				<span class="fc">1,963</span>
+			</li>
+			<li>
+				<span class="ft">Joined:</span>
+				<span class="fc">31-December 10</span>
+			</li>
+		
+	</ul>   
+			
+	
+<!--userInfoPane-->
+				</div>
+				<div class="post_body">
+
+
+  				<!--<h2>Re: Converting and Evaluating Infix, Postfix and Prefix Expressions in C</h2>-->
+
+
+					<p class="posted_info">
+						
+						
+						Posted <abbr class="published" title="2011-02-03T20:52:09+00:00">03 February 2011 - 01:52 PM</abbr>
+					</p>
+					
+					<div class="post entry-content" id="">
+						<!--cached-Mon, 11 Nov 2013 03:11:02 +0000-->I've been able to do the stack version in C++ and now I'm trying to do the exp<b></b>ression tree from a postfix exp<b></b>ression.  My question is, when you create nodes in the conversion function, you use malloc(), so I changed that to newnode = new node;, but you don't deallocate the memory anywhere, so does the code you present have memory leaks?<br>
+<br>
+*EDIT*: I just tested it by defining a destructor for the node struct and it's not called at all for my code, which is very similar to born2codes program except where I changed C code to C++ code.  I then made a function that is basically the same thing as postorder traversal except I delete the node instead of printing it.  I then call this function at the end of main, and the node destructor prints out correctly for each node in the tree.
+						
+						<br>
+						<p class="edit">
+								This post has been edited by <b>vividexstance</b>: 03 February 2011 - 02:14 PM
+								
+							</p>
+					</div>
+					
+
+
+				</div>
+			<div class="rep_bar clear right" id="rep_post_1239987"><span style="float: left; margin-top: 10px; font-weight: bold;">
+
+Was This Post Helpful? 
+
+</span>
+					
+												
+				
+					<span class="reputation zero rep_show clickable" title="Reputation" onclick="ipb.topic.repPopUp( this, 1239987 );">
+				
+				
+				
+						0
+					</span>
+<!-- REMOVED From Below: AND Array['member_id'] != 0 -->
+					<ul>
+						
+							<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#" class="rep_up" title="Vote this post up"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/add.png" alt="+"></a></li>
+						
+						
+							<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#" class="rep_down" title="Vote this post down"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/delete.png" alt="-"></a></li>
+						
+						</ul>
+				</div>
+				<script type="text/javascript">
+					ipb.global.registerReputation( 'rep_post_1239987', { app: 'forums', type: 'pid', typeid: '1239987' }, parseInt('0') );
+				</script>
+				<ul class="post_controls">
+					
+					<li class="top hide"><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#top" class="top" title="Back to top">Back to top</a></li>
+					
+					
+						<li class="multiquote" id="multiq_1239987" style="">
+					
+							<a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=1239987" title="Quote this post with Multi-Quote"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> MultiQuote</a>
+						</li>
+					<li><a href="http://www.dreamincode.net/forums/index.php?app=forums&module=post&section=post&do=reply_post&f=48&t=37428&qpid=1239987" title="Reply directly to this post"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/comment_add.png" alt="Reply Icon"> Quote + Reply</a></li>
+					
+					
+					<!-- Matt: Approve / unapprove post button -->
+					
+				</ul>
+				<script type="text/javascript">
+					// Show multiquote for JS browsers
+					$('multiq_1239987').show();
+					
+					if( $('toggle_post_1239987') )
+					{
+						$('toggle_post_1239987').show();
+					}
+				</script>
+				
+			</div>
+		<!-- </if> -->			
+		</div>
+		
+		<hr>
+		
+	
+
+<!-- MOD LINKS -->
+
+<!-- REPUTATION FILTERS -->
+
+
+<!-- THREADED MODE -->
+
+<ul class="topic_jump right clear">
+	<li class="previous"><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/page__view__old">&#8592; Previous Topic</a></li>
+	<li><strong><a href="http://www.dreamincode.net/forums/forum/48-c-tutorials/" title="Return to C++ Tutorials">C++ Tutorials</a></strong></li>
+	<li class="next"><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/page__view__new">Next Topic &#8594;</a></li>
+</ul>
+
+<!-- BOTTOM BUTTONS -->
+<div class="topic_controls clear">
+	<ul class="pagination left">
+		<li class="total">(2 Pages)</li>
+		<li class="pagejump clickable pj0090660001" id="anonymous_element_2">
+			<img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/dropdown.png" alt="+">
+			<script type="text/javascript">
+				ipb.global.registerPageJump( '0090660001', { url: "http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/", stKey: 'st', perPage: 15, totalPages: 2 } );
+			</script>
+		</li>
+		
+		
+		
+			
+				
+					<li class="active">1</li>
+				
+			
+
+				
+					<li><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/page__st__15" title="2">2</a></li>
+				
+			
+		
+		
+			<li class="next"><a href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/page__st__15" title="Next page" rel="next">&#8594;</a></li>
+		
+		
+	</ul>
+
+</div>
+<!--<hr />-->
+
+<!-- ACTIVE USERS -->
+
+
+<!-- Close topic -->
+</div>
+
+
+
+<!--/topicViewTemplate-->
+            <br class="clear">
+          </div>
+          <!--included content-->
+<!-- ads_bottom-->
+
+<table align="center" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+	<td align="center" valign="top">
+		<div id="div-gpt-ad-1326943007260-4" style="width:336px; height:280px;">
+	<script type="text/javascript">
+	googletag.cmd.push(function() { googletag.display('div-gpt-ad-1326943007260-4'); });
+	</script>
+	</div>
+		</td>
+<td align="left" valign="top" width="100%">		
+		<div id="related" style="margin-top: -25px;">
+					<style>
+		.related ul { list-style-type: circle; font-size: 12px; font-weight: bold; }
+        .related li { margin-bottom: 5px; background-position: left 7px !important; margin-left: -35px; }
+		.related h2 { font-size: 18px; font-weight: bold; }
+		.related a { color: blue; }
+		</style>
+		<div class="related">
+<h2>Related C++ Topics<sup>beta</sup></h2><ul><li><a href="http://www.dreamincode.net/forums/topic/67112-infix-postfix-postfix-infix-codes-problem/" title="1 Replies - Topic Started: October 11, 2008, 3:43 am" '="">"Infix-Postfix &amp; Postfix-Infix" Codes Problem</a> </li><li><a href="http://www.dreamincode.net/forums/topic/56209-solving-for-a-variable-in-postfix/" title="3 Replies - Topic Started: June 30, 2008, 2:01 am" '="">Solving For A Variable In Postfix - Evaluate Postfix, Solve For A Variable</a> </li><li><a href="http://www.dreamincode.net/forums/topic/184754-infix-to-prepostfix/" title="3 Replies - Topic Started: August 6, 2010, 3:16 am" '="">Infix To Pre/postfix - Get Noticed On How To Put Parenthesis In The Program</a> </li><li><a href="http://www.dreamincode.net/forums/topic/190186-converting-a-postfix-expression-to-infix-expression-with-paranthesis/" title="0 Replies - Topic Started: September 13, 2010, 1:39 pm" '="">Converting A Postfix Expression To Infix Expression With Paranthesis - Help Needed</a> </li><li><a href="http://www.dreamincode.net/forums/topic/183786-infix-to-postfix-program/" title="2 Replies - Topic Started: July 30, 2010, 3:41 am" '="">Infix To Postfix Program - Needing Help</a> </li><li><a href="http://www.dreamincode.net/forums/topic/201161-infix-to-postfix-conversion/" title="1 Replies - Topic Started: November 20, 2010, 3:27 pm" '="">Infix To Postfix Conversion</a> </li><li><a href="http://www.dreamincode.net/forums/topic/256300-problem-with-postfix/" title="11 Replies - Topic Started: November 19, 2011, 3:05 am" '="">Problem With Postfix</a> </li><li><a href="http://www.dreamincode.net/forums/topic/53002-need-prefix-conversion-codeurgent/" title="2 Replies - Topic Started: May 25, 2008, 9:00 pm" '="">Need Prefix Conversion Code...urgent!</a> </li><li><a href="http://www.dreamincode.net/forums/topic/202838-dynamic-arraystruct/" title="14 Replies - Topic Started: November 30, 2010, 3:39 pm" '="">Dynamic Array/struct</a> </li><li><a href="http://www.dreamincode.net/forums/topic/126758-converting-postfix-infix-prefix-and-binary-trees-in-one-program/" title="2 Replies - Topic Started: September 19, 2009, 2:39 pm" '="">Converting Postfix, Infix, Prefix And Binary Trees In One Program - Conversion.....</a> </li></ul></div>			</div>
+		</td>
+        
+	</tr>
+</tbody></table>
+
+<!--/ads_bottom-->
+
+<!--/ included content-->
+
+          <script type="text/javascript" src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/lightbox.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+	// Lightbox Configuration
+	LightboxOptions = Object.extend({
+	    fileLoadingImage:        'http://cdn.dreamincode.net/forums/public/style_images/master/lightbox/loading.gif',     
+	    fileBottomNavCloseImage: 'http://cdn.dreamincode.net/forums/public/style_images/master/lightbox/closelabel.gif',
+	    overlayOpacity: 0.8,   // controls transparency of shadow overlay
+	    animate: true,         // toggles resizing animations
+	    resizeSpeed: 7,        // controls the speed of the image resizing animations (1=slowest and 10=fastest)
+	    borderSize: 10,         //if you adjust the padding in the CSS, you will need to update this variable
+		// When grouping images this is used to write: Image # of #.
+		// Change it for non-english localization
+		labelImage: "Image",
+		labelOf: "of"
+	}, window.LightboxOptions || {});
+/* Watch for a lightbox image and set up our downloadbutton watcher */
+document.observe('click', (function(event){
+    var target = event.findElement('a[rel^=lightbox]') || event.findElement('area[rel^=lightbox]');
+    if (target) {
+        event.stop();
+        gbl_addDownloadButton();
+    }
+}).bind(this));
+var _to    = '';
+var _last  = '';
+function gbl_addDownloadButton()
+{
+	if ( typeof( ipsLightbox.lightboxImage ) != 'undefined' && ipsLightbox.lightboxImage.src )
+	{
+		if ( _last != ipsLightbox.lightboxImage.src )
+		{
+			if ( ! $('gbl_d') )
+			{
+				$('bottomNav').insert( { top: "<div id='gbl_d' style='text-align:right;padding-bottom:4px;'></div>" } );
+			}
+			
+			$('gbl_d').update( "<a href='"+ ipsLightbox.lightboxImage.src + "' target='_blank'><img src='http://cdn.dreamincode.net/forums/public/style_images/master/lightbox/download-icon.png' /></a>" );
+			
+			_last = ipsLightbox.lightboxImage.src;
+		}
+	}
+	
+	/* Check for init and then keep checking for new image */
+	_to = setTimeout( "gbl_addDownloadButton()", 1000 );
+}
+//]]>
+</script>
+
+        </div><!-- /ipbwrapper -->
+      </div><!-- /content_inner -->
+    </div><!--/content_hold-->	
+
+    <!--included content-->
+			
+<div id="sidebar">
+<div style="margin-left: 35px; padding-top: 10px; text-align: center;">
+<a href="http://www.dreamincode.net/forums/index.php?app=core&module=global&section=register&coppa_user=&termsread=1&coppa_pass=1&agree_to_terms=1"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/ask_a_question_336.png"></a>
+<br>
+<!-- begin ad tag (tile=2) -->
+<div id="div-gpt-ad-1326943007260-2" style="width: 300px; margin-left: 25px;">                                                                   
+<!-- begin ad tag (tile=2) -->
+<script type="text/javascript">
+//<![CDATA[
+ord = window.ord || Math.floor(Math.random()*1E16);
+document.write('<script type="text/javascript" src="http://ad2.netshelter.net/adj/ns.dreamincode/general;ppos=atf;kw=;tile=2;sz=300x250,300x600;ord=' + ord + '?"><\/script>');
+//]]>
+</script><script type="text/javascript" src="http://ad2.netshelter.net/adj/ns.dreamincode/general;ppos=atf;kw=;tile=2;sz=300x250,300x600;ord=9154467610642314?"></script>
+<noscript>&lt;a href="http://ad2.netshelter.net/jump/ns.dreamincode/general;ppos=atf;kw=;tile=2;sz=300x250,300x600;ord=123456789?" target="_blank" &gt;&lt;img src="http://ad2.netshelter.net/ad/ns.dreamincode/general;ppos=atf;kw=;tile=2;sz=300x250,300x600;ord=123456789?" border="0" alt="" /&gt;&lt;/a&gt;</noscript>
+<!-- end ad tag -->
+</div>
+</div>
+<div id="sidebar_inner">
+
+	
+<div class="column1">
+  <!-- google_ad_section_start(weight=ignore) -->
+    <div class="navigation">
+      
+
+		
+		<h2><a href="http://www.dreamincode.net/forums/forum/72-general-discussion/">General Discussion</a></h2>
+			<ul class="navigation">			
+											 <li><a href="http://www.dreamincode.net/forums/forum/1-caffeine-lounge/" title="This is our off-topic forum for discussions related to non-programming topics including: sports, current events, games, music, movies, food, drink, TV, geek related (toys &amp; technology), debates, life events, rants, and occasionally religion and politics. ">Caffeine Lounge</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/93-corner-cubicle/" title="Off-Topic discussion of IT related topics. This is the forum for professionals and those interested in serious discussion of topics related to the world of IT. It all happens here in the corner cubicle. ">Corner Cubicle</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/110-student-campus/" title="A forum just for students. Talk about colleges, classes, resources for students, homework, and other topics related to life in school. ">Student Campus</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/82-software-development/" title="Discuss topics related to developing software. Including architecture, design patterns, documentation, software industry, and other non-language specific programming topics. ">Software Development</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/83-industry-news/" title="A place for topics that announce various news from the web/software development industry (product release announcements, updates, new services etc.)">Industry News</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/65-introduce-yourself/" title="A place where you can introduce yourself to the community and greet other new members.">Introduce Yourself</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/201-nightmareincode/" title="*NEW* - Post the worst code you come across and have a good laugh. Because sometimes your code dreams, are really code nightmares. ">Nightmare.In.Code</a></li>
+										</ul>
+		
+		<h2><a href="http://www.dreamincode.net/forums/forum/76-programming-help/">Programming Help</a></h2>
+			<ul class="navigation">			
+											 <li><a href="http://www.dreamincode.net/forums/forum/15-c-and-c/" title="Expert programming help for C, and C++! Ask questions about homework assignments, or any other C/C++ related problems. C++ is a great language when beginning programming. ">C and C++</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/67-vbnet/" title="Ask questions about Microsoft&#39;s VB.NET programming language.">VB.NET</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/32-java/" title="Post your Java questions in here. We&#39;re happy to help with homework assignments, work projects, or any other java related questions. Java is common when beginning computer programming.">Java</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/84-c/" title="Object Oriented Programming at its finest. Encompassing power with ease of use, C# has become one of the top programming languages of the new age.">C#</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/30-aspnet/" title="Having some problems with ASP.NET programming? Pop in here and ask your question!">ASP.NET</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/142-net-framework/" title="">.NET Framework</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/21-vb6/" title="Our Visual Basic experts are happy to help with homework assignments, commercial applications, or any other VB question you may have! Visual Basic is good to learn programming. ">VB6</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/28-php/" title="Having some PHP problems? Need some help with a few functions? This is the place to ask! ">PHP</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/70-ruby/" title="This up-and-coming language is easy to learn, fast to develop, and very powerful. Get help with the Ruby on Rails framework or any other Ruby questions you have!">Ruby</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/29-python/" title="">Python</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/31-coldfusion/" title="It&#39;s the other white meat... a rapid application development language that will have you hooked in no time! From cfoutput to components, we can help you out!">ColdFusion</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/14-databases/" title="mySQL, PostgreSQL, Access, SQL, and Oracle... you&#39;ve got a database question... we&#39;ve got database answers!">Databases</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/62-other-languages/" title="Discuss languages that don&#39;t have a specific forum. Including COBOL, Fortran, ADA, Basic, etc. ">Other Languages</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/69-game-development/" title="Get help with anything game development related. Programming, 3D Engines, Art, Design and Math etc.">Game Development</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/109-mobile-development/" title="Discuss developing applications for mobile phones. Including Android, iPhone, and other mobile platforms. ">Mobile Development</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/126-52-weeks-of-code/" title="">52 Weeks Of Code</a></li>
+										</ul>
+		
+		<h2><a href="http://www.dreamincode.net/forums/forum/74-web-development/">Web Development</a></h2>
+			<ul class="navigation">			
+											 <li><a href="http://www.dreamincode.net/forums/forum/63-web-development/" title="Discuss anything that doesn&#39;t fit in the other web development forums.">Web Development</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/4-html-css/" title="Have questions about HTML, XHTML, CSS? We&#39;ll get you headed in the right direction! ">HTML &amp; CSS</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/90-javascript/" title="JavaScript and AJAX, it&#39;s what Web 2.0 is all about. Post your JavaScript related questions here!">JavaScript</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/3-graphic-design/" title="Photoshop and Corel gurus come on in! Can&#39;t figure out how to do that cool effect? Have some questions or cool web images you&#39;ve made? Post em&#39; here">Graphic Design</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/8-flash-actionscript/" title="Let our Flash and ActionScript experts answer your questions. From simple tweens to advanced flash remoting, we&#39;re happy to help!">Flash &amp; ActionScript</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/89-blogging/" title="Wordpress, Blogger, Plugins, Themes, Skins, Pay Per Post, and anything else related to the Blogging industry. ">Blogging</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/59-seo-advertising/" title="Advertising, SEO, AdSense, AdWords, Link Trades, and more! Now that you&#39;ve created your website, you&#39;ve gotta drive traffic to it. Discuss current trends and techniques here. ">SEO &amp; Advertising</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/88-web-servers-hosting/" title="Apache, IIS, Shared Hosting, Dedicated Hosting, Colocation. We&#39;ll make sure you get your site online and keep it online!">Web Servers &amp; Hosting</a></li>
+														 <li><a href="http://www.dreamincode.net/forums/forum/5-site-check/" title="Post your web site to be reviewed by fellow dream.in.code members. ">Site Check</a></li>
+										</ul>
+
+      	  <!-- DIC_160x600_Left_Default -->
+		<div id="div-gpt-ad-1326943007260-0" style="width:160px; height:600px;">
+		<script type="text/javascript">
+		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1326943007260-0'); });
+		</script>
+		</div>
+	        <br>
+    </div>
+	<!-- google_ad_section_end -->
+</div><div class="column2">
+<!--   	<div id="search">
+  		<h2>Search<sup><span style="color:red; font-size: 10px;">Updated!</span></sup><span class="w00t">w00t</span></h2>
+  		<span style="font-size: 11px; color: #CCCCCC; font-weight: bold;"><B>Over 509,000 Pages!</B></span>
+  	  <form style="margin:0;" id="searchbox_000872085005376217422:zamd_7elal4" action="/home">
+  			<input type="hidden" name="cx" value="000872085005376217422:zamd_7elal4" />
+  			<input type="hidden" name="p" value="google" />
+  			<input type="hidden" name="cof" value="FORID:11" />
+  			<input name="q" type="text" size="9" style="font-size: 14px; font-weight: bolder; margin-left: -2px;" value="" />
+  			<input type="submit" name="sa" value="Go" />
+  	  </form>
+  	  <a href="/forums/index.php?app=core&module=search" style="text-decoration: none;"><span style="font-size: 11px; color: #CCCCCC; font-weight: bold; text-decoration: underline;">Advanced Forum Search</span></a>
+  	</div> -->
+  	<div class="tutorials" style="margin-top: -15px;">
+   		<h2>Follow &amp; Share</h2>
+		<!-- Place this tag in the <head> of your document -->
+<script type="text/javascript">
+window.___gcfg = {lang: 'en'};
+(function() 
+{var po = document.createElement("script");
+po.type = "text/javascript"; po.async = true;po.src = "https://apis.google.com/js/plusone.js";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(po, s);
+})();</script>
+
+<!-- Place this tag where you want the badge to render -->
+<div id="___plus_0" style="text-indent: 0px; margin: 0px; padding: 0px; background-color: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 170px; height: 84px; background-position: initial initial; background-repeat: initial initial;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 170px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 84px;" tabindex="0" vspace="0" width="100%" id="I0_1386330904388" name="I0_1386330904388" src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/badge.htm" data-gapiattached="true" title="Badge v2"></iframe></div><br>
+  		<a href="http://www.dreamincode.net/rss/featured.php" rel="alternate"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/feed-icon32x32.png" alt="Dream.In.Code RSS Feed" style="border:0; margin: 2px;" width="32" height="32"></a>
+  		<a href="http://www.linkedin.com/e/gis/1506187" rel="alternate"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/linkedin-icon32x32.png" alt="Dream.In.Code LinkedIn Group" style="border:0; margin: 2px;" width="32" height="32"></a>
+  		<a href="http://www.twitter.com/dreamincode" rel="alternate"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/twitter-icon32x32.png" alt="Follow Us On Twitter" style="border:0; margin: 2px;" width="32" height="32"></a>
+  		<a href="http://www.facebook.com/pages/DreamInCode/62219401412" rel="alternate"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/facebook.png" alt="Fan Us On Facebook" style="border:0; margin: 2px;" width="32" height="32"></a>
+  <!-- 		<script type="text/javascript">
+  			document.write('<a rel="nofollow" href="http://del.icio.us/post?url=http://www.dreamincode.net&title=Dream.In.Code Programming Community" title="Bookmark This to del.icio.us"><img src="http://cdn.dreamincode.net/home/images/80727937.png" alt="delicious" height="16" width="16" style="margin-left: 2px;" /></a>');
+  			document.write('<a rel="nofollow" href="http://digg.com/submit?phase=2&url='+encodeURIComponent(location.href)+'" title="Digg This!"><img src="http://cdn.dreamincode.net/home/images/89072042.png" alt="digg" height="16" width="16" /></a>');
+  			document.write('<a rel="nofollow" href="http://www.google.com/bookmarks/mark?op=add&bkmk='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title)+'" title="Bookmark to Google"><img src="http://cdn.dreamincode.net/home/images/10847106.png" alt="google" height="16" width="16" /></a>');
+  			document.write('<a rel="nofollow"  href="http://www.newsvine.com/_tools/seed&save?u='+encodeURIComponent(location.href)+'&h='+encodeURIComponent(document.title)+'" title="Bookmark to Newsvine" ><img src="http://cdn.dreamincode.net/home/images/27563199.png" alt="newsvine" height="16" width="16" /></a>');
+  			document.write('<a rel="nofollow" href="http://reddit.com/submit? url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title)+'" title="Add to reddit"><img src="http://cdn.dreamincode.net/home/images/10796749.png" alt="reddit" height="16" width="16" /></a>');
+  			document.write('<a rel="nofollow" href="http://www.spurl.net/spurl.php?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title)+'" title="Spurl This!"><img src="http://cdn.dreamincode.net/home/images/67105361.png" alt="spurl" height="16" width="16" /></a>');
+  			document.write('<a rel="nofollow" href="http://technorati.com/faves?add='+encodeURIComponent(location.href)+'" title="Add to Technorati Favorites" ><img src="http://cdn.dreamincode.net/home/images/81723336.png" alt="Technorati" height="16" width="16" /></a>');
+  		</script> -->
+		<p><a href="http://feeds.feedburner.com/dic_featured"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/dic_featured" height="26" width="88" style="border:0; margin-top: 2px; margin-left: 3px;" alt=""></a></p>
+  		<!-- google_ad_section_end -->
+
+
+<!--		<h2>Give It A Try!</h2>
+<div class="lqm_ad" lqm_publisher="lqm.dreamincode.site" lqm_zone="ros" lqm_format="160x250"></div>-->
+
+		
+
+
+		<!-- <h2>Celebrate &amp; Win!</h2>
+		<a href="http://www.dreamincode.net/forums/topic/247091-dreamincode-10th-birthday500k-members-contest/"><img src="http://cdn.dreamincode.net/home/images/10yr_170x200.jpg"></a> -->
+  		
+<h2><a href="http://www.dreamincode.net/forums/showforum48.htm">C++ Tutorials</a></h2>
+<ul>
+	<li><a href="http://www.dreamincode.net/forums/topic/330359-external-sorting-with-c/">External Sorting with C</a></li>
+	<li><a href="http://www.dreamincode.net/forums/topic/327182-c-windows-charting-library-part-6/">C++ Windows Charting Library Part 6</a></li>
+	<li><a href="http://www.dreamincode.net/forums/topic/320703-bezier-curves-part-1-linear-algebra-series/">Bezier Curves Part 1 [Linear Algebra Series]</a></li>
+	<li><a href="http://www.dreamincode.net/forums/topic/319433-stl-algorithms-tutorial-1-using-sort/">STL Algorithms ~ Tutorial 1: Using sort()</a></li>
+	<li><a href="http://www.dreamincode.net/forums/topic/307602-c-windows-charting-library-part-5/">C++ Windows Charting Library Part 5</a></li>
+	<li><a href="http://www.dreamincode.net/forums/topic/306307-c-windows-charting-library-part-4/">C++ Windows Charting Library Part 4</a></li>
+	<li><a href="http://www.dreamincode.net/forums/topic/305536-c-windows-charting-library-part-3/">C++ Windows Charting Library Part 3</a></li>
+	<li><a href="http://www.dreamincode.net/forums/topic/305461-c-windows-charting-library-part-2/">C++ Windows Charting Library Part 2</a></li>
+	<li><a href="http://www.dreamincode.net/forums/topic/305434-c-windows-charting-library-part-1/">C++ Windows Charting Library Part 1</a></li>
+	<li><a href="http://www.dreamincode.net/forums/topic/299052-win32-image-editing-program-part3/">Win32 Image Editing Program Part3.</a></li>
+		<li><a href="http://www.dreamincode.net/forums/showforum48.htm"><strong>338 More C++ Tutorials...</strong></a></li>	</ul>
+	
+  
+  		<h2>Reference Sheets</h2>
+  		<a href="http://www.dreamincode.net/forums/showtopic17947.htm"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/refsheets5.png" height="157" width="151"></a>
+  
+  		<h2><a href="http://www.dreamincode.net/code/browse.php?cid=2">C++ Snippets</a></h2>
+<ul>
+	<li><a href="http://www.dreamincode.net/code/snippet82.htm">Linked List Class</a></li>
+	<li><a href="http://www.dreamincode.net/code/snippet279.htm">Insertion Sort Example</a></li>
+	<li><a href="http://www.dreamincode.net/code/snippet80.htm">Recursive Fibonacci Sequence</a></li>
+	<li><a href="http://www.dreamincode.net/code/snippet884.htm">C++ calculator</a></li>
+	<li><a href="http://www.dreamincode.net/code/snippet244.htm">Finding Square Root without using sqrt()</a></li>
+	<li><a href="http://www.dreamincode.net/code/snippet693.htm">integer to string conversion</a></li>
+	<li><a href="http://www.dreamincode.net/code/snippet693.htm">C++ Int to String</a></li>
+	<li><a href="http://www.dreamincode.net/code/snippet77.htm">Getting Current Directory</a></li>
+	<li><a href="http://www.dreamincode.net/code/snippet39.htm">Convert cases of strings</a></li>
+	<li><a href="http://www.dreamincode.net/code/snippet313.htm">Shortest Function to Reverse a String ( Uses Recursion )</a></li>
+		<li><a href="http://www.dreamincode.net/code/browse.php?cid=2"><strong>954 More C++ Snippets...</strong></a></li></ul>
+  
+  		<!-- google_ad_section_start(weight=ignore) -->
+  		<h2><a rel="nofollow" href="http://www.dreamincode.net/?p=chat">DIC Chatroom</a></h2>
+  		<ul><li><a rel="nofollow" href="http://www.dreamincode.net/?p=chat">Join our IRC Chat</a></li></ul>
+  		<h2>Bye Bye Ads</h2>
+  		<a rel="nofollow" href="http://www.dreamincode.net/forums/index.php?act=paysubs&CODE=index"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/dicpp.gif" width="141" height="32"></a>
+  		<h2>Monthly Drawing</h2>
+  		<a href="http://www.dreamincode.net/forums/index.php?showtopic=19383" rel="nofollow"><img alt="Thumb Drive" width="130" height="77" src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/monthlygiveaway.gif"></a>
+   
+            <!-- google_ad_section_end -->
+  	</div>
+</div>
+<div style="padding-left: 50px; position: relative; clear: both;">
+<iframe src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/likebox.htm" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:287px;" allowtransparency="true"></iframe>
+</div>
+
+  </div> <!-- /sidebar_inner-->
+</div> <!-- /sidebar -->
+
+
+<!--/ included content-->
+  </div><!--/main_content-->
+
+  <div id="footer">
+    <!--included content-->
+<!-- google_ad_section_start(weight=ignore) -->	
+<br><br>
+<div align="center">
+	<strong><a href="http://www.dreamincode.net/forums/index.php?showannouncement=22">FAQ</a> | <a href="http://www.dreamincode.net/forums/blog/1081-dreamincode-team-blog/">Team Blog</a> | <a href="http://www.dreamincode.net/forums/forum/106-site-questions-support/">Feedback/Support</a> | <a href="http://www.dreamincode.net/downloads/MediaKit.pdf" rel="nofollow">Advertising</a><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/pdf.gif" border="0" valign="middle"> | <a href="http://www.dreamincode.net/?p=tos" rel="nofollow">Terms of Use</a> | <a href="http://www.dreamincode.net/?p=privacy" rel="nofollow">Privacy Policy</a> | <a href="http://www.dreamincode.net/?p=about" rel="nofollow">About Us</a> 
+</strong></div><strong>
+
+<br>
+
+
+<br>
+
+<div align="center">Copyright 2001-2013 <a href="http://www.mediagroup1.com/" rel="nofollow"><b>MediaGroup1 LLC</b></a>, All Rights Reserved<br>A <a href="http://www.mediagroup1.com/" rel="nofollow"><b>MediaGroup1 LLC</b></a> Production - Version 6.0.2.1.36<br>Server: secure3</div>
+
+</strong></div><strong>
+
+
+
+
+<script type="text/javascript" src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/thickbox.js"></script>
+<script type="text/javascript" src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/jsapi"></script>
+<script type="text/javascript">
+google.load('search', '1',{nocss: true});
+jQuery(document).ready(function() {
+	jQuery("#cse-search-box").submit(function () {
+	var customSearchControl = new google.search.CustomSearchControl('000872085005376217422:zamd_7elal4');
+	customSearchControl.setLinkTarget(google.search.Search.LINK_TARGET_SELF);
+	tb_show("Dream.In.Code Search Results - Powered By <img src='http://www.google.com/cse/images/google_custom_search_smwide.gif'>", "#TB_inline?height=480&width=800");
+	var drawOptions = new google.search.DrawOptions();
+	customSearchControl.draw(document.getElementById("TB_ajaxContent"), drawOptions);
+	customSearchControl.execute(document.getElementById("query").value);
+	return false;
+	});
+});
+</script><script src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/saved_resource" type="text/javascript"></script><script src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/default+en.I.js" type="text/javascript"></script>
+
+
+
+
+<!-- <style>.hilite { background-color: #ff0; }</style>
+<script type="text/javascript" src="http://cdn.dreamincode.net/home/templates2/se_hilite.js"></script>
+ -->
+
+
+<!-- Google Website Optimizer Tracking Script 
+<script type="text/javascript">
+if(typeof(_gat)!='object')document.write('<sc'+'ript src="http'+
+(document.location.protocol=='https:'?'s://ssl':'://www')+
+'.google-analytics.com/ga.js"></sc'+'ript>')</script>
+<script type="text/javascript">
+try {
+var gwoTracker=_gat._getTracker("UA-69851-6");
+gwoTracker._trackPageview("/2514943763/test");
+}catch(err){}</script>
+ End of Google Website Optimizer Tracking Script -->
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript">
+_qoptions={
+qacct:"p-d4Szpdj6xMw-o"
+};
+</script>
+<script type="text/javascript" src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/quant.js"></script>
+<noscript>
+&lt;img src="http://pixel.quantserve.com/pixel/p-d4Szpdj6xMw-o.gif" style="display: none;" border="0" height="1" width="1" alt="Quantcast"/&gt;
+</noscript>
+<!-- End Quantcast tag -->
+
+<script src="http://www.dreamincode.net/mint/?js" type="text/javascript"></script>
+
+<!-- <script type='text/javascript' language='Javascript' src='http://s1.lqcdn.com/m.min.js?dt=2.3.110104.1'></script> -->
+
+<script type="text/javascript">
+    function _dmBootstrap(file) {
+        var _dma = document.createElement('script'); 
+        _dma.type = 'text/javascript';
+        _dma.async = true; 
+        _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+    }
+    function _dmFollowup(file) { if (typeof DMAds === 'undefined')  _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js');}
+    (function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000);})();
+</script>
+
+
+<script type="text/javascript" src="http://track.netshelter.net/js/sites/dreamincode.net.js"></script>
+
+<!-- google_ad_section_end -->	
+
+
+
+<div align="center">
+</div>
+
+<!--/ included content-->
+
+
+
+
+  </strong></div><iframe name="oauth2relay640859686" id="oauth2relay640859686" src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/postmessageRelay.htm" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe><strong>
+			
+
+<script type="text/javascript" src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/shCore.js"></script>
+<script type="text/javascript" src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/shBrushBash.js"></script>
+
+
+<script type="text/javascript">
+jQuery(function(){
+  jQuery('pre').removeClass('brush: bash').addClass('brush: cpp');
+});
+</script>
+<script type="text/javascript" src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/shBrushCpp.js"></script>
+
+
+
+
+
+
+
+
+
+	<link type="text/css" rel="stylesheet" href="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/shCore.css">
+	<link type="text/css" rel="stylesheet" href="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/shThemeDefault.css">
+	<script type="text/javascript">
+                SyntaxHighlighter.config.clipboardSwf = 'http://cdn.dreamincode.net/syntax/scripts/clipboard.swf';
+		SyntaxHighlighter.all();
+	</script>
+
+
+  
+</strong><div id="pj_anonymous_element_1_wrap" class="ipbmenu_content pj0090660001" jumpid="0090660001" style="position: absolute; display: none; z-index: 9999;"><h3 class="bar" style="z-index: 10000;">Jump to page</h3><input type="text" class="input_text" id="pj_anonymous_element_1_input" size="8" style="z-index: 10000;"> <input type="submit" value="Go" class="input_submit add_folder" id="pj_anonymous_element_1_submit" style="z-index: 10000;"></div><div id="pj_anonymous_element_2_wrap" class="ipbmenu_content pj0090660001" jumpid="0090660001" style="position: absolute; display: none; z-index: 9999;"><h3 class="bar" style="z-index: 10000;">Jump to page</h3><input type="text" class="input_text" id="pj_anonymous_element_2_input" size="8" style="z-index: 10000;"> <input type="submit" value="Go" class="input_submit add_folder" id="pj_anonymous_element_2_submit" style="z-index: 10000;"></div><div id="overlay" style="display: none;"></div><div id="lightbox" style="display: none;"><div id="outerImageContainer" style="width: 250px; height: 250px;"><div id="imageContainer"><img id="lightboxImage"><div id="hoverNav"><a id="prevLink" href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#"></a><a id="nextLink" href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#"></a></div><div id="loading"><a id="loadingLink" href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/loading.gif"></a></div></div></div><div id="imageDataContainer"><div id="imageData"><div id="imageDetails"><span id="caption"></span><span id="numberDisplay"></span></div><div id="bottomNav"><a id="bottomNavClose" href="http://www.dreamincode.net/forums/topic/37428-converting-and-evaluating-infix-postfix-and-prefix-expressions-in-c/#"><img src="./Converting And Evaluating Infix, Postfix And Prefix Expressions In C - C++ Tutorials   Dream.In.Code_files/closelabel.gif"></a></div></div></div></div></body></html>
